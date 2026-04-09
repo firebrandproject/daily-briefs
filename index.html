@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Brief Archive | Firebrand Intelligence</title>
+<style>
+:root{--bg:#0a0e17;--card:#111827;--border:#1e293b;--accent:#f59e0b;--red:#ef4444;--green:#22c55e;--blue:#3b82f6;--cyan:#06b6d4;--purple:#a855f7;--text:#e2e8f0;--muted:#94a3b8}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+header{background:linear-gradient(135deg,#0f172a,#1e1b4b);border-bottom:3px solid var(--accent);padding:40px 30px;margin-bottom:30px;text-align:center}
+header h1{font-size:2em;color:var(--accent);text-transform:uppercase;letter-spacing:4px}
+header .subtitle{color:var(--muted);font-size:1em;margin-top:8px}
+header .desc{color:var(--cyan);font-size:0.85em;margin-top:12px;max-width:700px;margin-left:auto;margin-right:auto}
+.structure-box{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:24px;margin-bottom:30px}
+.structure-box h2{color:var(--accent);margin-bottom:16px;font-size:1.2em}
+.structure-box pre{background:#0f172a;padding:16px;border-radius:6px;color:var(--cyan);font-size:0.85em;overflow-x:auto;line-height:1.8}
+.month-section{margin-bottom:30px}
+.month-section h2{color:var(--accent);font-size:1.3em;padding-bottom:12px;border-bottom:2px solid var(--border);margin-bottom:16px}
+.brief-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:16px}
+.brief-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:20px;transition:all 0.2s;position:relative;overflow:hidden}
+.brief-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 20px rgba(245,158,11,0.1)}
+.brief-card .date{color:var(--accent);font-size:1.1em;font-weight:700;margin-bottom:8px}
+.brief-card .type-tag{display:inline-block;padding:2px 10px;border-radius:4px;font-size:0.7em;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+.tag-sitrep{background:#14532d;color:#86efac}
+.tag-theater{background:#713f12;color:#fde68a}
+.tag-iran{background:#7f1d1d;color:#fca5a5}
+.tag-maritime{background:#164e63;color:#67e8f9}
+.brief-card .title{font-size:1em;font-weight:600;margin-bottom:8px}
+.brief-card .summary{color:var(--muted);font-size:0.85em;margin-bottom:12px}
+.brief-card .meta{display:flex;justify-content:space-between;align-items:center;font-size:0.75em;color:var(--muted)}
+.brief-card .version{color:var(--cyan)}
+.brief-card a{color:var(--cyan);text-decoration:none;font-weight:600;font-size:0.9em}
+.brief-card a:hover{color:#fff;text-decoration:underline}
+.stats-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:30px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px;text-align:center}
+.stat .label{color:var(--muted);font-size:0.7em;text-transform:uppercase;letter-spacing:1px}
+.stat .value{font-size:1.5em;font-weight:700;color:var(--accent);margin-top:4px}
+.legend{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px;margin-bottom:30px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.legend span{font-size:0.8em;color:var(--muted)}
+footer{text-align:center;padding:30px;color:var(--muted);font-size:0.8em;border-top:1px solid var(--border);margin-top:30px}
+footer a{color:var(--cyan);text-decoration:none}
+</style>
+</head>
+<body>
+<header>
+<h1>FIREBRAND INTELLIGENCE</h1>
+<div class="subtitle">Daily Brief Archive</div>
+<div class="desc">All OSINT situation reports organized by date. Every brief contains sourced intelligence with confidence badges and clickable source links. Browse by date or theater.</div>
+</header>
+<div class="container">
+
+<div class="stats-bar">
+<div class="stat"><div class="label">Total Briefs</div><div class="value">2</div></div>
+<div class="stat"><div class="label">Coverage Start</div><div class="value">Apr 9</div></div>
+<div class="stat"><div class="label">Theaters</div><div class="value">5</div></div>
+<div class="stat"><div class="label">Sources Used</div><div class="value">30+</div></div>
+</div>
+
+<div class="legend">
+<span><strong>Brief Types:</strong></span>
+<span><span class="type-tag tag-sitrep">DAILY SITREP</span> All-theater overview</span>
+<span><span class="type-tag tag-theater">THEATER BRIEF</span> Single-theater deep dive</span>
+<span><span class="type-tag tag-iran">IRAN</span> Iran theater</span>
+<span><span class="type-tag tag-maritime">MARITIME</span> Hormuz / shipping</span>
+</div>
+
+<div class="structure-box">
+<h2>Repository Structure</h2>
+<pre>daily-briefs/
+&#9500;&#9472;&#9472; index.html              &larr; This hub page
+&#9500;&#9472;&#9472; 2026/
+&#9474;   &#9500;&#9472;&#9472; 04/
+&#9474;   &#9474;   &#9500;&#9472;&#9472; 09/
+&#9474;   &#9474;   &#9474;   &#9500;&#9472;&#9472; sitrep.html      &larr; Daily SITREP (all theaters)
+&#9474;   &#9474;   &#9474;   &#9492;&#9472;&#9472; lebanon.html     &larr; Lebanon Theater Brief
+&#9474;   &#9474;   &#9500;&#9472;&#9472; 10/              &larr; (next day)
+&#9474;   &#9474;   &#9492;&#9472;&#9472; .../
+&#9492;&#9472;&#9472; URL: /daily-briefs/2026/04/09/sitrep.html</pre>
+</div>
+
+<!-- APRIL 2026 -->
+<div class="month-section">
+<h2>April 2026</h2>
+<div class="brief-grid">
+
+<div class="brief-card">
+<div class="date">April 9, 2026</div>
+<span class="type-tag tag-sitrep">DAILY SITREP</span>
+<span class="type-tag tag-iran">IRAN</span>
+<span class="type-tag tag-theater">LEBANON</span>
+<span class="type-tag tag-maritime">HORMUZ</span>
+<div class="title" style="margin-top:10px">All-Theater Situation Report &mdash; Day 40 / Ceasefire Day 2</div>
+<div class="summary">Op Epic Fury concluded (13K+ strikes). Ceasefire under strain &mdash; Lebanon inclusion disputed. IDF claims Naim Qassem killed. Hormuz conditionally open. Islamabad talks imminent. Houthi escalation. 9 sections + 5 watchpoints + 24 sources.</div>
+<div class="meta">
+<span class="version">v1.1 | 1345 PDT</span>
+<span>8 stat cards &bull; 9 sections</span>
+</div>
+<div style="margin-top:12px">
+<a href="2026/04/09/sitrep.html">&#9654; Open SITREP &rarr;</a>
+</div>
+</div>
+
+<div class="brief-card">
+<div class="date">April 9, 2026</div>
+<span class="type-tag tag-theater">THEATER BRIEF</span>
+<span class="type-tag" style="background:#713f12;color:#fde68a">LEBANON</span>
+<div class="title" style="margin-top:10px">Lebanon Theater Brief &mdash; Operation Eternal Darkness</div>
+<div class="summary">Focused Lebanon analysis: IDF massive strike campaign (254+ killed Apr 8), Qassem assassination claim, Hezbollah retaliatory rockets, ceasefire exclusion, Netanyahu direct talks order, European condemnation, Belgian peacekeepers. Timeline + watchpoints.</div>
+<div class="meta">
+<span class="version">v1.1 | Updated</span>
+<span>Lebanon-specific</span>
+</div>
+<div style="margin-top:12px">
+<a href="2026/04/09/lebanon.html">&#9654; Open Lebanon Brief &rarr;</a>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<footer>
+<p><strong>FIREBRAND INTELLIGENCE</strong> | Daily Brief Archive</p>
+<p>New briefs added daily. Each brief is a self-contained HTML app with full sourcing.</p>
+<p style="margin-top:8px"><a href="https://github.com/firebrandproject/daily-briefs">GitHub Repo</a> | &copy; 2026 The Firebrand Project</p>
+</footer>
+</body>
+</html>
