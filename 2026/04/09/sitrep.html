@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily SITREP | April 9, 2026 | Firebrand Intelligence</title>
+<style>
+:root{--bg:#0a0e17;--card:#111827;--border:#1e293b;--accent:#f59e0b;--red:#ef4444;--green:#22c55e;--blue:#3b82f6;--cyan:#06b6d4;--purple:#a855f7;--text:#e2e8f0;--muted:#94a3b8;--confirmed:#22c55e;--likely:#f59e0b;--claim:#ef4444;--assessment:#a855f7}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+header{background:linear-gradient(135deg,#0f172a,#1e1b4b);border-bottom:3px solid var(--accent);padding:30px;margin-bottom:24px}
+header h1{font-size:1.8em;color:var(--accent);text-transform:uppercase;letter-spacing:3px}
+header .subtitle{color:var(--muted);font-size:0.95em;margin-top:4px}
+.update-bar{background:#1e293b;border-left:4px solid var(--cyan);padding:10px 16px;margin-bottom:20px;font-size:0.85em;color:var(--cyan);display:flex;justify-content:space-between;align-items:center}
+.bluf{background:linear-gradient(135deg,#1a1a2e,#16213e);border:1px solid var(--accent);border-radius:8px;padding:24px;margin-bottom:24px}
+.bluf h2{color:var(--accent);margin-bottom:12px;font-size:1.3em}
+.bluf ul{list-style:none;padding:0}
+.bluf li{padding:8px 0;border-bottom:1px solid #1e293b;position:relative;padding-left:20px}
+.bluf li::before{content:'\25B6';position:absolute;left:0;color:var(--accent);font-size:0.7em;top:11px}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:24px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px;text-align:center}
+.stat-card .label{color:var(--muted);font-size:0.75em;text-transform:uppercase;letter-spacing:1px}
+.stat-card .value{font-size:1.8em;font-weight:700;margin-top:4px}
+.stat-card .value.red{color:var(--red)}
+.stat-card .value.green{color:var(--green)}
+.stat-card .value.blue{color:var(--blue)}
+.stat-card .value.amber{color:var(--accent)}
+.stat-card .value.cyan{color:var(--cyan)}
+.stat-card .value.purple{color:var(--purple)}
+section{background:var(--card);border:1px solid var(--border);border-radius:8px;margin-bottom:24px;overflow:hidden}
+section h2{background:#1e293b;padding:16px 20px;font-size:1.15em;border-bottom:1px solid var(--border)}
+section h2 .theater-tag{display:inline-block;padding:2px 10px;border-radius:4px;font-size:0.7em;margin-left:10px;vertical-align:middle}
+.tag-iran{background:#7f1d1d;color:#fca5a5}
+.tag-lebanon{background:#713f12;color:#fde68a}
+.tag-hormuz{background:#164e63;color:#67e8f9}
+.tag-houthi{background:#581c87;color:#d8b4fe}
+.tag-ceasefire{background:#14532d;color:#86efac}
+.tag-diplo{background:#1e3a5f;color:#93c5fd}
+.section-body{padding:20px}
+.event{margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #1e293b}
+.event:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.event h3{font-size:1em;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.65em;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+.badge-confirmed{background:#14532d;color:#86efac}
+.badge-likely{background:#713f12;color:#fde68a}
+.badge-claim{background:#7f1d1d;color:#fca5a5}
+.badge-assessment{background:#581c87;color:#d8b4fe}
+.badge-breaking{background:#dc2626;color:#fff;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.6}}
+.event p{color:var(--muted);font-size:0.9em;margin-bottom:6px}
+.source-link{color:var(--cyan);text-decoration:none;font-size:0.8em;border-bottom:1px dotted var(--cyan)}
+.source-link:hover{color:#fff}
+table{width:100%;border-collapse:collapse;font-size:0.85em}
+th{background:#1e293b;padding:10px 12px;text-align:left;color:var(--accent);text-transform:uppercase;font-size:0.75em;letter-spacing:1px}
+td{padding:10px 12px;border-bottom:1px solid #1e293b}
+.timeline{position:relative;padding-left:30px}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:20px}
+.tl-item::before{content:'';position:absolute;left:-26px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
+.tl-item.critical::before{background:var(--red)}
+.tl-item .tl-time{color:var(--accent);font-size:0.8em;font-weight:600}
+.tl-item .tl-content{margin-top:4px;font-size:0.9em;color:var(--muted)}
+.watchpoint{background:#1a1a2e;border-left:4px solid var(--red);padding:16px;margin-bottom:12px;border-radius:0 8px 8px 0}
+.watchpoint h4{color:var(--red);margin-bottom:4px;font-size:0.95em}
+.watchpoint p{color:var(--muted);font-size:0.85em}
+.source-section{background:#0f172a;border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:24px}
+.source-section h3{color:var(--cyan);margin-bottom:12px}
+.source-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:8px}
+.source-item{display:flex;align-items:center;gap:8px;padding:6px 10px;background:#111827;border-radius:4px;font-size:0.8em}
+.source-item a{color:var(--cyan);text-decoration:none}
+.source-item a:hover{color:#fff;text-decoration:underline}
+.source-cat{color:var(--accent);font-weight:600;min-width:70px}
+footer{text-align:center;padding:30px;color:var(--muted);font-size:0.8em;border-top:1px solid var(--border)}
+.flash{background:linear-gradient(90deg,#7f1d1d,#450a0a);border:1px solid #dc2626;border-radius:8px;padding:20px;margin-bottom:24px;animation:flash-pulse 3s infinite}
+@keyframes flash-pulse{0%,100%{border-color:#dc2626}50%{border-color:#f87171}}
+.nav-tabs{display:flex;gap:4px;margin-bottom:20px;flex-wrap:wrap}
+.nav-tab{padding:8px 16px;background:#1e293b;border:1px solid var(--border);border-radius:6px 6px 0 0;cursor:pointer;color:var(--muted);font-size:0.85em;transition:all 0.2s}
+.nav-tab:hover,.nav-tab.active{background:var(--card);color:var(--accent);border-bottom-color:var(--card)}
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<h1>FIREBRAND INTELLIGENCE DAILY SITREP</h1>
+<div class="subtitle">All-Theater Situation Report | April 9, 2026 | Day 40 of Operation Epic Fury | Ceasefire Day 2 | The Firebrand Project</div>
+</div>
+</header>
+<div class="container">
+
+<div class="update-bar">
+<span>LAST UPDATED: April 9, 2026 &mdash; 1300 PDT</span>
+<span>CLASSIFICATION: OPEN SOURCE | OSINT COMPILATION</span>
+</div>
+
+<!-- BREAKING FLASH -->
+<div class="flash">
+<h3 style="color:#fca5a5;margin-bottom:8px">&#9888; BREAKING: IDF CLAIMS HEZBOLLAH CHIEF NAIM QASSEM KILLED IN BEIRUT STRIKE</h3>
+<p style="color:#fca5a5;font-size:0.9em">Israel claims it assassinated Hezbollah Secretary-General Naim Qassem overnight in a targeted Beirut airstrike. His personal secretary/nephew Ali Yusuf Harshi also reported killed. Hezbollah has NOT confirmed. If verified, this would be the second Hezbollah chief killed by Israel in 18 months.</p>
+<p><span class="badge badge-claim">IDF CLAIM</span> <a class="source-link" href="https://www.reuters.com/world/middle-east/israeli-military-says-it-has-killed-hezbollah-chief-naim-qassem-2026-04-09/" target="_blank">Reuters</a> | <a class="source-link" href="https://iranwire.com/en/news/150999-israel-army-claim-hezbollah-secretary-general-naim-qassem-killed/" target="_blank">IranWire</a></p>
+</div>
+
+<!-- BLUF -->
+<div class="bluf">
+<h2>BOTTOM LINE UP FRONT (BLUF)</h2>
+<ul>
+<li><strong>Operation Epic Fury concluded.</strong> CENTCOM Adm. Brad Cooper announced 13,000+ strikes over 38 days. US forces paused offensive ops under ceasefire but remain deployed (50,000 troops in theater). 13 US KIA, 381 WIA confirmed.</li>
+<li><strong>Ceasefire under severe strain.</strong> Pakistan-brokered 2-week truce (effective Apr 8) disputed over Lebanon inclusion. Iran insists Lebanon is covered; US/Israel say it is not. Iran threatens ceasefire collapse within hours if Israel not restrained.</li>
+<li><strong>Lebanon &mdash; deadliest day of war.</strong> IDF struck 100+ sites on Apr 8 in Operation Eternal Darkness killing 254+, wounding 1,100+. Hezbollah fired rockets into northern Israel for first time since ceasefire. Netanyahu orders direct talks with Lebanon.</li>
+<li><strong>Naim Qassem assassination claim.</strong> IDF claims it killed Hezbollah chief in overnight Beirut strike. If confirmed, devastating blow to Hezbollah command. Qassem replaced Nasrallah (killed Sep 2024). NOT yet independently confirmed.</li>
+<li><strong>Strait of Hormuz &mdash; murky status.</strong> IRGC published new navigation map directing ships north toward Iranian coast. Claims mines in traditional lanes. Iran says strait open under its protocol; Combined Maritime Force says traffic flowing but routes altered.</li>
+<li><strong>Islamabad talks imminent.</strong> Iran delegation heading to Pakistan for talks starting Friday (Apr 11). Based on Iran's 10-point proposal. JD Vance to travel for US side. Turkey's Erdogan credited with back-channel diplomacy.</li>
+<li><strong>Houthi escalation continues.</strong> Fourth attack on Israel claimed (Apr 4). Coordinated ops with Iran/Hezbollah. Threatened gradual escalation. Israel consulting Washington on response.</li>
+</ul>
+</div>
+
+<!-- KEY STATS -->
+<div class="stats-grid">
+<div class="stat-card"><div class="label">Op Epic Fury Duration</div><div class="value amber">38 Days</div></div>
+<div class="stat-card"><div class="label">CENTCOM Strikes</div><div class="value red">13,000+</div></div>
+<div class="stat-card"><div class="label">US KIA / WIA</div><div class="value red">13 / 381</div></div>
+<div class="stat-card"><div class="label">Ceasefire Status</div><div class="value amber">STRAINED</div></div>
+<div class="stat-card"><div class="label">Lebanon KIA (Apr 8)</div><div class="value red">254+</div></div>
+<div class="stat-card"><div class="label">Hormuz Status</div><div class="value cyan">CONDITIONAL</div></div>
+<div class="stat-card"><div class="label">US Troops in Theater</div><div class="value blue">~50,000</div></div>
+<div class="stat-card"><div class="label">Talks Begin</div><div class="value green">Apr 11</div></div>
+</div>
+
+<!-- SECTION 1: OPERATION EPIC FURY -->
+<section>
+<h2>1. OPERATION EPIC FURY &mdash; CONCLUSION <span class="theater-tag tag-iran">IRAN THEATER</span></h2>
+<div class="section-body">
+<div class="event">
+<h3>CENTCOM Declares Objectives Accomplished <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>Adm. Brad Cooper announced the conclusion of Operation Epic Fury on April 9. Over 38 days of combat operations, US forces conducted 13,000+ strikes on Iranian military targets alongside Israel, flying thousands of combat sorties. US forces have paused offensive operations under the ceasefire but remain present, vigilant, and ready to restart at a moment's notice.</p>
+<p><a class="source-link" href="https://www.centcom.mil/OPERATIONS-AND-EXERCISES/EPIC-FURY/" target="_blank">CENTCOM Official</a> | <a class="source-link" href="https://www.war.gov/News/News-Stories/Article/Article/4454276/epic-fury-quelled-for-now-objectives-accomplished-us-forces-remain" target="_blank">DoD News</a></p>
+</div>
+<div class="event">
+<h3>US Casualties: 13 KIA, 381 WIA <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>Pentagon confirmed 13 US service members killed (7 combat, 6 non-hostile including KC-135 crew lost over Iraq on Mar 12). 381 wounded in action: 231 soldiers, 63 sailors, 33 airmen, 19 Marines. Additionally, 155 Iranian vessels destroyed. Iran suffered what CENTCOM called a "generational military setback."</p>
+<p><a class="source-link" href="https://www.militarytimes.com/news/your-military/2026/04/08/pentagon-data-13-us-troops-killed-346-wounded-in-operation-epic-fury/" target="_blank">Military Times</a></p>
+</div>
+<div class="event">
+<h3>50,000 US Troops Remain Deployed <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>Despite ceasefire, approximately 50,000 US troops remain in the CENTCOM AOR. Defense Secretary Hegseth stated Iran should find a way to communicate ceasefire compliance to their forces. "Our troops are prepared to restart at a moment's notice."</p>
+<p><a class="source-link" href="https://www.militarytimes.com/news/your-military/2026/04/08/pentagon-data-13-us-troops-killed-346-wounded-in-operation-epic-fury/" target="_blank">Military Times</a></p>
+</div>
+<table>
+<tr><th>Metric</th><th>Value</th><th>Confidence</th></tr>
+<tr><td>Duration</td><td>38 days (Feb 28 - Apr 8)</td><td><span class="badge badge-confirmed">CONFIRMED</span></td></tr>
+<tr><td>Total Strikes</td><td>13,000+ targets</td><td><span class="badge badge-confirmed">CONFIRMED</span></td></tr>
+<tr><td>Dynamic Targets</td><td>4,000</td><td><span class="badge badge-confirmed">CONFIRMED</span></td></tr>
+<tr><td>Iranian Vessels Destroyed</td><td>155</td><td><span class="badge badge-confirmed">CONFIRMED</span></td></tr>
+<tr><td>US KIA</td><td>13 (7 hostile, 6 non-hostile)</td><td><span class="badge badge-confirmed">CONFIRMED</span></td></tr>
+<tr><td>US WIA</td><td>381</td><td><span class="badge badge-confirmed">CONFIRMED</span></td></tr>
+<tr><td>US Force Strength</td><td>~50,000 troops</td><td><span class="badge badge-confirmed">CONFIRMED</span></td></tr>
+</table>
+</div>
+</section>
+
+<!-- SECTION 2: CEASEFIRE STATUS -->
+<section>
+<h2>2. CEASEFIRE STATUS &mdash; CRITICAL FAULT LINES <span class="theater-tag tag-ceasefire">CEASEFIRE</span></h2>
+<div class="section-body">
+<div class="event">
+<h3>Lebanon Inclusion Dispute &mdash; Central Fracture Point <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>The two-week ceasefire brokered by Pakistan (effective Apr 8) has immediately fractured over whether Lebanon is covered. Iran insists Lebanon is an inseparable part of the deal. US and Israel explicitly say Lebanon is excluded. Pakistan PM Sharif originally stated the ceasefire applied "everywhere, including Lebanon." European diplomats are calling for Lebanon's inclusion.</p>
+<p><a class="source-link" href="https://www.democracynow.org/2026/4/9/israeli_escalation_in_lebanon" target="_blank">Democracy Now</a> | <a class="source-link" href="https://www.cnn.com/2026/04/09/world/live-news/iran-war-trump-us-ceasefire" target="_blank">CNN Live</a> | <a class="source-link" href="https://www.dw.com/en/iran-threatens-new-hostilities-as-israel-pounds-lebanon/live-76715205" target="_blank">DW</a></p>
+</div>
+<div class="event">
+<h3>Iran Threatens Collapse &mdash; "Limited Hours Remain" <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>Mahdi Mohammadi, Iranian national security adviser, warned that only "limited hours remain" to preserve the ceasefire. He stated that unless Israel is fully restrained in Lebanon, there would be "no ceasefire or negotiations" and that missiles are already prepared for launch. The IRGC Aerospace Commander echoed the warning.</p>
+<p><a class="source-link" href="https://www.aljazeera.com/news/liveblog/2026/4/9/iran-war-live-israel-kills-254-in-lebanon-shaking-trump-tehran-ceasefire" target="_blank">Al Jazeera Live</a></p>
+</div>
+<div class="event">
+<h3>Iran Accuses US of Ceasefire Violations <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>Iran accused the US of violating the ceasefire deal, pointing to continued Israeli attacks on Lebanon. Attacks continued in the early hours of the truce in Iran, UAE, and Kuwait. The ceasefire's durability appears to rest on the Islamabad talks scheduled for Apr 11.</p>
+<p><a class="source-link" href="https://www.cbsnews.com/live-updates/iran-trump-ceasefire-strait-hormuz-israel-war-hezbollah-continues/" target="_blank">CBS News</a></p>
+</div>
+</div>
+</section>
+
+<!-- SECTION 3: LEBANON THEATER -->
+<section>
+<h2>3. LEBANON THEATER &mdash; OPERATION ETERNAL DARKNESS <span class="theater-tag tag-lebanon">LEBANON</span></h2>
+<div class="section-body">
+<div class="event">
+<h3>Deadliest Day: 254+ Killed in April 8 Strikes <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>IDF launched its heaviest attack on Lebanon since the war began on March 2. Approximately 100 airstrikes in 10 minutes targeted Dahiyeh (South Beirut), Central Beirut, Bekaa Valley, and South Lebanon. Lebanese authorities reported 254 killed, 1,100+ wounded. The IDF described the operation as targeting all Hezbollah command and control centers simultaneously.</p>
+<p><a class="source-link" href="https://www.aljazeera.com/news/liveblog/2026/4/9/iran-war-live-israel-kills-254-in-lebanon-shaking-trump-tehran-ceasefire" target="_blank">Al Jazeera</a> | <a class="source-link" href="https://www.democracynow.org/2026/4/9/israeli_escalation_in_lebanon" target="_blank">Democracy Now</a> | <a class="source-link" href="https://www.reuters.com/world/middle-east/hezbollah-pauses-attacks-under-us-iran-ceasefire-sources-close-group-say-2026-04-08/" target="_blank">Reuters</a></p>
+</div>
+<div class="event">
+<h3>IDF Claims Naim Qassem Killed <span class="badge badge-claim">IDF CLAIM</span> <span class="badge badge-breaking">BREAKING</span></h3>
+<p>IDF spokesperson Avichay Adraee claimed Hezbollah Secretary-General Naim Qassem was killed in overnight Beirut strikes. His personal secretary and nephew Ali Yusuf Harshi was also claimed killed. Approximately 10 Hezbollah military locations were targeted including strategic crossings south of the Litani River. Hezbollah has NOT confirmed Qassem's death.</p>
+<p><a class="source-link" href="https://www.reuters.com/world/middle-east/israeli-military-says-it-has-killed-hezbollah-chief-naim-qassem-2026-04-09/" target="_blank">Reuters</a> | <a class="source-link" href="https://iranwire.com/en/news/150999-israel-army-claim-hezbollah-secretary-general-naim-qassem-killed/" target="_blank">IranWire</a> | <a class="source-link" href="https://www.indiatoday.in/amp/world/story/israel-claims-hezbollah-chief-naim-qassem-killed-in-beirut-strikes-last-night-2893660" target="_blank">India Today</a></p>
+</div>
+<div class="event">
+<h3>Hezbollah Fires Rockets Into Northern Israel <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>In the early hours of April 9, Hezbollah launched a missile attack against northern Israel &mdash; the first since the ceasefire was announced. This represents a significant escalation and Hezbollah's response to the April 8 mass strikes.</p>
+<p><a class="source-link" href="https://en.wikipedia.org/wiki/2026_Lebanon_war" target="_blank">Wikipedia - 2026 Lebanon War</a></p>
+</div>
+<div class="event">
+<h3>Netanyahu Orders Direct Talks with Lebanon <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>Israeli PM Netanyahu ordered his cabinet to open direct talks with Lebanon "as soon as possible." Discussions expected to focus on disarming Hezbollah. Lebanon is seeking a US guarantee for a temporary ceasefire. European nations (Belgium, others) condemned the IDF strikes as "unacceptable" amid the US-Iran truce.</p>
+<p><a class="source-link" href="https://www.timesofisrael.com/liveblog-april-09-2026/" target="_blank">Times of Israel</a> | <a class="source-link" href="https://www.timesofisrael.com/unacceptable-european-countries-slam-idf-strikes-on-hezbollah-amid-us-iran-truce/" target="_blank">ToI - European Condemnation</a></p>
+</div>
+<div class="event">
+<h3>Lebanon Declares National Day of Mourning <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>Lebanon declared a national day of mourning following the deadliest single day of strikes since the war began.</p>
+<p><a class="source-link" href="https://www.aljazeera.com/news/liveblog/2026/4/9/iran-war-live-israel-kills-254-in-lebanon-shaking-trump-tehran-ceasefire" target="_blank">Al Jazeera</a></p>
+</div>
+</div>
+</section>
+
+<!-- SECTION 4: STRAIT OF HORMUZ -->
+<section>
+<h2>4. STRAIT OF HORMUZ &mdash; CONDITIONAL REOPENING <span class="theater-tag tag-hormuz">MARITIME</span></h2>
+<div class="section-body">
+<div class="event">
+<h3>IRGC Publishes New Navigation Protocol <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>The IRGC published a navigational map showing a designated safe route for vessels, directing them north toward the Iranian coastline rather than traditional shipping lanes near Oman. The IRGC warned of potential anti-ship mines in the main shipping channels. All vessels advised to follow new navigational guidance.</p>
+<p><a class="source-link" href="https://www.aljazeera.com/economy/2026/4/9/what-is-irans-strait-of-hormuz-protocol-and-will-other-nations-accept-it" target="_blank">Al Jazeera - Hormuz Protocol</a></p>
+</div>
+<div class="event">
+<h3>Iran Announces Two Alternative Routes <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>On April 9, Iran announced two alternative routes for transiting the Strait. The Combined Maritime Force stated the strait remains open and commercial traffic continues to flow, but routes have been altered. It remains unclear whether Iran is imposing toll fees during the ceasefire.</p>
+<p><a class="source-link" href="https://www.jpost.com/middle-east/iran-news/article-892378" target="_blank">Jerusalem Post</a></p>
+</div>
+<div class="event">
+<h3>Trump: Strait Will Be "OPEN &amp; SAFE" <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>President Trump posted on Truth Social that the Strait would be "OPEN &amp; SAFE" and that US troops would remain in the region throughout negotiations. Trump warned of a return to military action if discussions falter.</p>
+<p><a class="source-link" href="https://www.aljazeera.com/economy/2026/4/9/what-is-irans-strait-of-hormuz-protocol-and-will-other-nations-accept-it" target="_blank">Al Jazeera</a></p>
+</div>
+<table>
+<tr><th>Parameter</th><th>Status</th><th>Confidence</th></tr>
+<tr><td>Strait Open?</td><td>Conditionally &mdash; under IRGC protocol</td><td><span class="badge badge-confirmed">CONFIRMED</span></td></tr>
+<tr><td>Traditional Lanes</td><td>Closed / mined (per IRGC claim)</td><td><span class="badge badge-claim">IRAN CLAIM</span></td></tr>
+<tr><td>New Route</td><td>North toward Iranian coast</td><td><span class="badge badge-confirmed">CONFIRMED</span></td></tr>
+<tr><td>Toll Fees</td><td>Unknown / unconfirmed</td><td><span class="badge badge-assessment">ASSESSMENT</span></td></tr>
+<tr><td>US Naval Presence</td><td>Ongoing &mdash; will not depart</td><td><span class="badge badge-confirmed">CONFIRMED</span></td></tr>
+</table>
+</div>
+</section>
+
+<!-- SECTION 5: HOUTHI FRONT -->
+<section>
+<h2>5. YEMEN / HOUTHI FRONT <span class="theater-tag tag-houthi">HOUTHIS</span></h2>
+<div class="section-body">
+<div class="event">
+<h3>Houthis Enter War with Caution &mdash; Four Attacks Since Mar 28 <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>Yemen's Houthis resumed attacks on Israel on March 28 after weeks of inactivity since the Iran war began. Four attacks launched through April 6, including ballistic missiles and UAVs targeting Ben Gurion Airport, Eilat, and military sites. All claimed as joint operations coordinated with Iran, IRGC, and Hezbollah. Limited physical impact compared to direct Iranian fire.</p>
+<p><a class="source-link" href="https://en.wikipedia.org/wiki/2026_Houthi_strikes_on_Israel" target="_blank">Wikipedia - Houthi Strikes</a> | <a class="source-link" href="https://english.aawsat.com/arab-world/5258632-houthis-threaten-gradual-escalation-after-fourth-attack-israel" target="_blank">Asharq Al-Awsat</a></p>
+</div>
+<div class="event">
+<h3>Houthis Threaten "Gradual Escalation" <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>After the fourth attack, Houthis warned of gradual escalation until "aggression on all resistance fronts stops." Israel is consulting Washington on response options. Yemen's internationally recognized government says a decisive battle to retake the state from Houthi control is nearing.</p>
+<p><a class="source-link" href="https://english.aawsat.com/arab-world/5258632-houthis-threaten-gradual-escalation-after-fourth-attack-israel" target="_blank">Asharq Al-Awsat</a></p>
+</div>
+</div>
+</section>
+
+<!-- SECTION 6: DIPLOMACY -->
+<section>
+<h2>6. DIPLOMATIC TRACK &mdash; ISLAMABAD TALKS <span class="theater-tag tag-diplo">DIPLOMACY</span></h2>
+<div class="section-body">
+<div class="event">
+<h3>Iran Delegation En Route to Islamabad <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>Iran's ambassador to Pakistan confirmed a delegation will arrive in Islamabad on Thursday night (Apr 9) for "serious talks" based on Tehran's 10-point proposal. Talks scheduled to formally begin Friday, April 11.</p>
+<p><a class="source-link" href="https://www.turkiyetoday.com/region/iranian-negotiators-head-to-islamabad-for-us-talks-on-april-9-3217729" target="_blank">Turkiye Today</a></p>
+</div>
+<div class="event">
+<h3>Iran's 10-Point Proposal &mdash; Key Terms <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>Iran's proposal includes: (1) No nuclear weapons development; (2) Cease uranium enrichment, transfer stockpile to IAEA; (3) IAEA oversight of remaining nuclear infrastructure; (4) Reopen Strait of Hormuz; (5) Discontinue support for regional proxies (Lebanon, Yemen); (6) Lift all sanctions and terminate UN snapback mechanism; (7) Restrict missile range and quantity. JD Vance claimed Iran sent three different versions, calling the first "written by ChatGPT."</p>
+<p><a class="source-link" href="https://www.aljazeera.com/news/2026/4/9/has-irans-10-point-plan-changed-as-jd-vance-claims" target="_blank">Al Jazeera - 10-Point Plan</a></p>
+</div>
+<div class="event">
+<h3>JD Vance to Travel for US Side <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>VP JD Vance is set to represent the US at the Islamabad talks. Islamabad has implemented a sweeping security lockdown with a two-day public holiday declared. Turkey's Erdogan credited with back-channel diplomacy &mdash; over 150 calls made to facilitate the ceasefire.</p>
+<p><a class="source-link" href="https://www.usatoday.com/story/news/world/2026/04/08/iran-war-ceasefire-strait-hormuz-trump-updates--live/89509782007/" target="_blank">USA Today</a> | <a class="source-link" href="https://www.muslimnetwork.tv/turkiyes-150-call-diplomacy-helps-secure-us-iran-ceasefire/" target="_blank">Muslim Network - Turkey Diplomacy</a> | <a class="source-link" href="https://www.cnn.com/2026/04/09/asia/pakistan-islamabad-talks-us-iran-ceasefire-intl-hnk" target="_blank">CNN - Pakistan Bridge</a></p>
+</div>
+</div>
+</section>
+
+<!-- SECTION 7: TIMELINE -->
+<section>
+<h2>7. APRIL 9 TIMELINE</h2>
+<div class="section-body">
+<div class="timeline">
+<div class="tl-item critical"><div class="tl-time">OVERNIGHT</div><div class="tl-content">IDF conducts massive airstrikes on Beirut &mdash; claims killing Hezbollah chief Naim Qassem and nephew Ali Yusuf Harshi. 10 military sites targeted. <a class="source-link" href="https://www.reuters.com/world/middle-east/israeli-military-says-it-has-killed-hezbollah-chief-naim-qassem-2026-04-09/" target="_blank">Reuters</a></div></div>
+<div class="tl-item critical"><div class="tl-time">EARLY HOURS</div><div class="tl-content">Hezbollah fires rockets into northern Israel for first time since ceasefire. <a class="source-link" href="https://en.wikipedia.org/wiki/2026_Lebanon_war" target="_blank">Wikipedia</a></div></div>
+<div class="tl-item"><div class="tl-time">MORNING</div><div class="tl-content">Lebanon declares national day of mourning. Casualty toll from Apr 8 confirmed at 254 killed, 1,100+ wounded. <a class="source-link" href="https://www.aljazeera.com/news/liveblog/2026/4/9/iran-war-live-israel-kills-254-in-lebanon-shaking-trump-tehran-ceasefire" target="_blank">Al Jazeera</a></div></div>
+<div class="tl-item"><div class="tl-time">MORNING</div><div class="tl-content">CENTCOM Adm. Brad Cooper addresses nation: Operation Epic Fury concluded after 13,000+ strikes over 38 days. <a class="source-link" href="https://www.centcom.mil/OPERATIONS-AND-EXERCISES/EPIC-FURY/" target="_blank">CENTCOM</a></div></div>
+<div class="tl-item"><div class="tl-time">MIDDAY</div><div class="tl-content">Iran threatens ceasefire collapse &mdash; NSA Mohammadi says "limited hours remain." Missiles prepared for launch. <a class="source-link" href="https://www.aljazeera.com/news/liveblog/2026/4/9/iran-war-live-israel-kills-254-in-lebanon-shaking-trump-tehran-ceasefire" target="_blank">Al Jazeera</a></div></div>
+<div class="tl-item"><div class="tl-time">MIDDAY</div><div class="tl-content">IRGC publishes new Hormuz navigation map. Two alternative routes announced. Anti-ship mine warning issued. <a class="source-link" href="https://www.aljazeera.com/economy/2026/4/9/what-is-irans-strait-of-hormuz-protocol-and-will-other-nations-accept-it" target="_blank">Al Jazeera</a></div></div>
+<div class="tl-item"><div class="tl-time">AFTERNOON</div><div class="tl-content">Netanyahu orders cabinet to begin direct talks with Lebanon on Hezbollah disarmament. <a class="source-link" href="https://www.timesofisrael.com/liveblog-april-09-2026/" target="_blank">Times of Israel</a></div></div>
+<div class="tl-item"><div class="tl-time">EVENING</div><div class="tl-content">Iranian delegation departs for Islamabad ahead of Friday talks. <a class="source-link" href="https://www.turkiyetoday.com/region/iranian-negotiators-head-to-islamabad-for-us-talks-on-april-9-3217729" target="_blank">Turkiye Today</a></div></div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 8: WATCHPOINTS -->
+<section>
+<h2>8. WATCHPOINTS &amp; FORWARD INDICATORS</h2>
+<div class="section-body">
+<div class="watchpoint">
+<h4>&#9888; WATCHPOINT 1: Qassem Kill Confirmation</h4>
+<p>If Hezbollah confirms Naim Qassem's death, expect major escalation signals from the Axis of Resistance. This would be the second Hezbollah chief killed by Israel in 18 months (Nasrallah Sep 2024, Qassem Apr 2026). Monitor Hezbollah's Al-Manar TV and Telegram channels for confirmation or denial.</p>
+</div>
+<div class="watchpoint">
+<h4>&#9888; WATCHPOINT 2: Iranian Retaliation Window</h4>
+<p>Iran explicitly warned retaliation could come as early as April 9. IRGC Aerospace Commander stated missiles are prepared. If Israel continues Lebanon strikes unabated, probability of Iranian missile launch increases significantly. Monitor IRGC Telegram channels and flight-tracking anomalies.</p>
+</div>
+<div class="watchpoint">
+<h4>&#9888; WATCHPOINT 3: Islamabad Talks (Apr 11)</h4>
+<p>Ceasefire survival likely depends on whether Friday's talks produce tangible de-escalation. JD Vance vs. Iranian delegation. If talks collapse, expect immediate resumption of hostilities. Pakistan's security lockdown indicates they expect high-profile attendance.</p>
+</div>
+<div class="watchpoint">
+<h4>&#9888; WATCHPOINT 4: Hormuz Mine Threat</h4>
+<p>IRGC claims anti-ship mines are present in traditional shipping lanes. If mines are confirmed, this represents a long-term hazard even after ceasefire. Monitor CMF advisories and AIS shipping data for vessels deviating or turning back.</p>
+</div>
+<div class="watchpoint">
+<h4>&#9888; WATCHPOINT 5: Houthi Escalation Cycle</h4>
+<p>Houthis have promised gradual escalation. Fifth attack likely imminent. Coordinated timing with any Iranian retaliation would indicate operational integration across the Axis. Monitor Houthi spokesperson broadcasts on Al-Masirah TV.</p>
+</div>
+</div>
+</section>
+
+<!-- LATE-BREAKING UPDATES (v1.1) -->
+<section>
+<h2>9. LATE-BREAKING UPDATES (v1.1) <span class="theater-tag tag-ceasefire">1345 PDT</span></h2>
+<div class="section-body">
+<div class="event">
+<h3>CLARIFICATION: Qassem Kill vs. Nephew Kill <span class="badge badge-assessment">ASSESSMENT</span></h3>
+<p>Reuters filed TWO separate reports: (1) IDF claims Naim Qassem himself killed, and (2) IDF confirmed killing nephew/secretary Ali Yusuf Harshi. The nephew kill is CONFIRMED. Qassem's death remains an unverified IDF CLAIM &mdash; Hezbollah has NOT confirmed. Exercise caution on Qassem status.</p>
+<p><a class="source-link" href="https://www.reuters.com/world/middle-east/israeli-military-says-it-has-killed-nephew-hezbollah-chief-naim-qassem-2026-04-09/" target="_blank">Reuters - Nephew Confirmed</a> | <a class="source-link" href="https://www.reuters.com/world/middle-east/israeli-military-says-it-has-killed-hezbollah-chief-naim-qassem-2026-04-09/" target="_blank">Reuters - Qassem Claim</a></p>
+</div>
+<div class="event">
+<h3>Hormuz: First Ships Transit But Traffic Near Standstill <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>NBC time-lapse shows first ships crossing the Strait of Hormuz post-ceasefire. However, NBC also reports traffic is effectively at a standstill &mdash; limited to Iran-linked ships. Oil prices rose back above $100/barrel. The strait is technically open but practically restricted.</p>
+<p><a class="source-link" href="https://www.nbcnews.com/world/iran/strait-hormuz-shipping-traffic-effectively-standstill-iran-ceasefire-rcna267391" target="_blank">NBC News - Standstill</a></p>
+</div>
+<div class="event">
+<h3>Iran Speaker: 3 Ceasefire Conditions Already Breached <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>Iran's parliamentary speaker claimed 3 stipulations from the 10-point framework have already been breached, particularly regarding cessation of Israeli operations against Hezbollah in Lebanon. Trump administration contests this.</p>
+<p><a class="source-link" href="https://www.nytimes.com/live/2026/04/09/world/iran-ceasefire-trump-lebanon" target="_blank">NYT Live</a></p>
+</div>
+<div class="event">
+<h3>CNN Assessment: Ceasefire "Largely Holding" <span class="badge badge-likely">LIKELY</span></h3>
+<p>Despite rhetoric, CNN's latest assessment is the ceasefire appears to be largely holding with fewer attacks reported across the region today.</p>
+<p><a class="source-link" href="https://www.cnn.com/2026/04/09/world/live-news/iran-war-trump-us-ceasefire" target="_blank">CNN Live</a></p>
+</div>
+</div>
+</section>
+
+<!-- SOURCES -->
+<div class="source-section">
+<h3>SOURCE INDEX &mdash; All Clickable</h3>
+<div class="source-grid">
+<div class="source-item"><span class="source-cat">OFFICIAL</span><a href="https://www.centcom.mil/OPERATIONS-AND-EXERCISES/EPIC-FURY/" target="_blank">CENTCOM - Operation Epic Fury</a></div>
+<div class="source-item"><span class="source-cat">OFFICIAL</span><a href="https://www.war.gov/News/News-Stories/Article/Article/4454276/epic-fury-quelled-for-now-objectives-accomplished-us-forces-remain" target="_blank">DoD News - Epic Fury Conclusion</a></div>
+<div class="source-item"><span class="source-cat">OFFICIAL</span><a href="https://www.militarytimes.com/news/your-military/2026/04/08/pentagon-data-13-us-troops-killed-346-wounded-in-operation-epic-fury/" target="_blank">Military Times - US Casualties</a></div>
+<div class="source-item"><span class="source-cat">WIRE</span><a href="https://www.reuters.com/world/middle-east/israeli-military-says-it-has-killed-hezbollah-chief-naim-qassem-2026-04-09/" target="_blank">Reuters - Qassem Kill Claim</a></div>
+<div class="source-item"><span class="source-cat">WIRE</span><a href="https://www.reuters.com/world/middle-east/hezbollah-pauses-attacks-under-us-iran-ceasefire-sources-close-group-say-2026-04-08/" target="_blank">Reuters - Lebanon Strikes</a></div>
+<div class="source-item"><span class="source-cat">LIVE</span><a href="https://www.aljazeera.com/news/liveblog/2026/4/9/iran-war-live-israel-kills-254-in-lebanon-shaking-trump-tehran-ceasefire" target="_blank">Al Jazeera Live Blog</a></div>
+<div class="source-item"><span class="source-cat">LIVE</span><a href="https://www.cnn.com/2026/04/09/world/live-news/iran-war-trump-us-ceasefire" target="_blank">CNN Live Updates</a></div>
+<div class="source-item"><span class="source-cat">LIVE</span><a href="https://www.nytimes.com/live/2026/04/09/world/iran-ceasefire-trump-lebanon" target="_blank">NYT Live Updates</a></div>
+<div class="source-item"><span class="source-cat">LIVE</span><a href="https://www.timesofisrael.com/liveblog-april-09-2026/" target="_blank">Times of Israel Liveblog</a></div>
+<div class="source-item"><span class="source-cat">LIVE</span><a href="https://www.dw.com/en/iran-threatens-new-hostilities-as-israel-pounds-lebanon/live-76715205" target="_blank">DW Live</a></div>
+<div class="source-item"><span class="source-cat">ANALYSIS</span><a href="https://www.aljazeera.com/news/2026/4/9/has-irans-10-point-plan-changed-as-jd-vance-claims" target="_blank">Al Jazeera - Iran 10-Point Plan</a></div>
+<div class="source-item"><span class="source-cat">ANALYSIS</span><a href="https://www.aljazeera.com/economy/2026/4/9/what-is-irans-strait-of-hormuz-protocol-and-will-other-nations-accept-it" target="_blank">Al Jazeera - Hormuz Protocol</a></div>
+<div class="source-item"><span class="source-cat">MEDIA</span><a href="https://www.democracynow.org/2026/4/9/israeli_escalation_in_lebanon" target="_blank">Democracy Now - Lebanon Escalation</a></div>
+<div class="source-item"><span class="source-cat">MEDIA</span><a href="https://www.cbsnews.com/live-updates/iran-trump-ceasefire-strait-hormuz-israel-war-hezbollah-continues/" target="_blank">CBS News - Ceasefire Violations</a></div>
+<div class="source-item"><span class="source-cat">MEDIA</span><a href="https://www.cnn.com/2026/04/09/asia/pakistan-islamabad-talks-us-iran-ceasefire-intl-hnk" target="_blank">CNN - Pakistan Bridge</a></div>
+<div class="source-item"><span class="source-cat">DIPLO</span><a href="https://www.turkiyetoday.com/region/iranian-negotiators-head-to-islamabad-for-us-talks-on-april-9-3217729" target="_blank">Turkiye Today - Iran Delegation</a></div>
+<div class="source-item"><span class="source-cat">DIPLO</span><a href="https://www.muslimnetwork.tv/turkiyes-150-call-diplomacy-helps-secure-us-iran-ceasefire/" target="_blank">Muslim Network - Turkey Diplomacy</a></div>
+<div class="source-item"><span class="source-cat">DIPLO</span><a href="https://www.usatoday.com/story/news/world/2026/04/08/iran-war-ceasefire-strait-hormuz-trump-updates--live/89509782007/" target="_blank">USA Today - Vance to Pakistan</a></div>
+<div class="source-item"><span class="source-cat">WIKI</span><a href="https://en.wikipedia.org/wiki/2026_Iran_war" target="_blank">Wikipedia - 2026 Iran War</a></div>
+<div class="source-item"><span class="source-cat">WIKI</span><a href="https://en.wikipedia.org/wiki/2026_Lebanon_war" target="_blank">Wikipedia - 2026 Lebanon War</a></div>
+<div class="source-item"><span class="source-cat">WIKI</span><a href="https://en.wikipedia.org/wiki/2026_Houthi_strikes_on_Israel" target="_blank">Wikipedia - 2026 Houthi Strikes</a></div>
+<div class="source-item"><span class="source-cat">OSINT</span><a href="https://iranwire.com/en/news/150999-israel-army-claim-hezbollah-secretary-general-naim-qassem-killed/" target="_blank">IranWire - Qassem Killed</a></div>
+<div class="source-item"><span class="source-cat">OSINT</span><a href="https://english.aawsat.com/arab-world/5258632-houthis-threaten-gradual-escalation-after-fourth-attack-israel" target="_blank">Asharq Al-Awsat - Houthi Escalation</a></div>
+<div class="source-item"><span class="source-cat">ISW</span><a href="https://understandingwar.org/research/middle-east/iran-update-special-report-april-3-2026/" target="_blank">ISW - Iran Special Report Apr 3</a></div>
+</div>
+</div>
+
+</div><!-- end container -->
+
+<footer>
+<p><strong>FIREBRAND INTELLIGENCE</strong> | Daily SITREP &mdash; April 9, 2026</p>
+<p>All-source open intelligence compilation. Every claim sourced with clickable links.</p>
+<p>Confidence badges: <span class="badge badge-confirmed">CONFIRMED</span> = Multi-source verified | <span class="badge badge-likely">LIKELY</span> = Credible single source + corroboration | <span class="badge badge-claim">CLAIM</span> = Single party claim, unverified | <span class="badge badge-assessment">ASSESSMENT</span> = Analyst judgment</p>
+<p style="margin-top:12px">&copy; 2026 The Firebrand Project. OSINT compilation for informational purposes.</p>
+</footer>
+
+</body>
+</html>
