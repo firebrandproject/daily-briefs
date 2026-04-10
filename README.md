@@ -25,6 +25,7 @@ Public-facing daily situation reports (SITREPs) deployed as self-contained HTML 
 | Date | Brief | Version | Key Topics |
 |---|---|---|---|
 | Apr 9, 2026 | [Daily SITREP](https://firebrandproject.github.io/daily-briefs/2026/04/09/sitrep.html) | v1.4 | Ceasefire Day 2, Hezbollah retaliation, Hormuz restrictions, Islamabad talks, Qassem kill claim |
+| Apr 10, 2026 | [Daily SITREP](https://firebrandproject.github.io/daily-briefs/2026/04/10/sitrep.html) | v1.0 | Ceasefire Day 3, Vance to Islamabad, Iran boycott threat, Hormuz paralyzed, Qassem unverified |
 
 ### Lebanon Theater
 
@@ -46,6 +47,8 @@ daily-briefs/
 |       |-- 09/
 |           |-- sitrep.html      # Apr 9 Daily SITREP (v1.4)
 |           |-- lebanon.html     # Apr 9 Lebanon Theater Brief
+|       |-- 10/
+|           |-- sitrep.html    # Apr 10 Daily SITREP (v1.0)
 ```
 
 **Convention:** `YYYY/MM/DD/[brief-name].html`
