@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily SITREP | April 11, 2026 | Firebrand Intelligence</title>
+<style>
+:root{--bg:#0a0e17;--card:#111827;--border:#1e293b;--accent:#f59e0b;--red:#ef4444;--green:#22c55e;--blue:#3b82f6;--cyan:#06b6d4;--purple:#a855f7;--text:#e2e8f0;--muted:#94a3b8;--confirmed:#22c55e;--likely:#f59e0b;--claim:#ef4444;--assessment:#a855f7}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+header{background:linear-gradient(135deg,#0f172a,#1e1b4b);border-bottom:3px solid var(--accent);padding:30px;margin-bottom:24px}
+header h1{font-size:1.8em;color:var(--accent);text-transform:uppercase;letter-spacing:3px}
+header .subtitle{color:var(--muted);font-size:0.95em;margin-top:4px}
+.update-bar{background:#1e293b;border-left:4px solid var(--cyan);padding:10px 16px;margin-bottom:20px;font-size:0.85em;color:var(--cyan);display:flex;justify-content:space-between;align-items:center}
+.bluf{background:linear-gradient(135deg,#1a1a2e,#16213e);border:1px solid var(--accent);border-radius:8px;padding:24px;margin-bottom:24px}
+.bluf h2{color:var(--accent);margin-bottom:12px;font-size:1.3em}
+.bluf ul{list-style:none;padding:0}
+.bluf li{padding:8px 0;border-bottom:1px solid #1e293b;position:relative;padding-left:20px}
+.bluf li::before{content:'\25B6';position:absolute;left:0;color:var(--accent);font-size:0.7em;top:11px}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:24px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px;text-align:center}
+.stat-card .label{color:var(--muted);font-size:0.75em;text-transform:uppercase;letter-spacing:1px}
+.stat-card .value{font-size:1.8em;font-weight:700;margin-top:4px}
+.stat-card .value.red{color:var(--red)}
+.stat-card .value.green{color:var(--green)}
+.stat-card .value.blue{color:var(--blue)}
+.stat-card .value.amber{color:var(--accent)}
+.stat-card .value.cyan{color:var(--cyan)}
+.stat-card .value.purple{color:var(--purple)}
+section{background:var(--card);border:1px solid var(--border);border-radius:8px;margin-bottom:24px;overflow:hidden}
+section h2{background:#1e293b;padding:16px 20px;font-size:1.15em;border-bottom:1px solid var(--border)}
+section h2 .theater-tag{display:inline-block;padding:2px 10px;border-radius:4px;font-size:0.7em;margin-left:10px;vertical-align:middle}
+.tag-iran{background:#7f1d1d;color:#fca5a5}
+.tag-lebanon{background:#713f12;color:#fde68a}
+.tag-hormuz{background:#164e63;color:#67e8f9}
+.tag-houthi{background:#581c87;color:#d8b4fe}
+.tag-ceasefire{background:#14532d;color:#86efac}
+.tag-diplo{background:#1e3a5f;color:#93c5fd}
+.section-body{padding:20px}
+.event{margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #1e293b}
+.event:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.event h3{font-size:1em;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.65em;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+.badge-confirmed{background:#14532d;color:#86efac}
+.badge-likely{background:#713f12;color:#fde68a}
+.badge-claim{background:#7f1d1d;color:#fca5a5}
+.badge-assessment{background:#581c87;color:#d8b4fe}
+.badge-developing{background:#1e3a5f;color:#93c5fd}
+.badge-breaking{background:#dc2626;color:#fff;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.6}}
+.event p{color:var(--muted);font-size:0.9em;margin-bottom:6px}
+.source-link{color:var(--cyan);text-decoration:none;font-size:0.8em;border-bottom:1px dotted var(--cyan)}
+.source-link:hover{color:#fff}
+table{width:100%;border-collapse:collapse;font-size:0.85em}
+th{background:#1e293b;padding:10px 12px;text-align:left;color:var(--accent);text-transform:uppercase;font-size:0.75em;letter-spacing:1px}
+td{padding:10px 12px;border-bottom:1px solid #1e293b}
+.watchpoint{background:#1a1a2e;border-left:4px solid var(--red);padding:16px;margin-bottom:12px;border-radius:0 8px 8px 0}
+.watchpoint h4{color:var(--red);margin-bottom:4px;font-size:0.95em}
+.watchpoint p{color:var(--muted);font-size:0.85em}
+.source-section{background:#0f172a;border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:24px}
+.source-section h3{color:var(--cyan);margin-bottom:12px}
+.source-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:8px}
+.source-item{display:flex;align-items:center;gap:8px;padding:6px 10px;background:#111827;border-radius:4px;font-size:0.8em}
+.source-item a{color:var(--cyan);text-decoration:none}
+.source-item a:hover{color:#fff;text-decoration:underline}
+.source-cat{color:var(--accent);font-weight:600;min-width:70px}
+footer{text-align:center;padding:30px;color:var(--muted);font-size:0.8em;border-top:1px solid var(--border)}
+.flash{background:linear-gradient(90deg,#7f1d1d,#450a0a);border:1px solid #dc2626;border-radius:8px;padding:20px;margin-bottom:24px;animation:flash-pulse 3s infinite}
+@keyframes flash-pulse{0%,100%{border-color:#dc2626}50%{border-color:#f87171}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>Firebrand Intelligence Daily SITREP</h1>
+<div class="subtitle">All-Theater Situation Report | April 11, 2026 | Day 43 &mdash; Operation Epic Fury | Ceasefire Day 4 | The Firebrand Project</div>
+</header>
+
+<div class="update-bar">
+<span>LAST UPDATED: April 11, 2026 &mdash; 0837 PDT</span>
+<span>CLASSIFICATION: OPEN SOURCE | OSINT COMPILATION</span>
+</div>
+
+<div class="flash">
+<h3>&#9888; BREAKING: US-IRAN DIRECT TALKS UNDERWAY IN ISLAMABAD &mdash; FIRST SINCE 1979 &mdash; CEASEFIRE UNDER SEVERE STRAIN &mdash; 426 TANKERS STRANDED AT HORMUZ</h3>
+<p>VP Vance, Witkoff, and Kushner in Islamabad for highest-stakes US-Iran negotiations since the Islamic Revolution. Iran entered with "deep distrust," presenting demands as red lines. Israel continues Lebanon strikes despite US pressure. Hormuz commercially paralyzed with 426 oil tankers and 53 LNG carriers stranded.</p>
+<p><span class="badge badge-confirmed">CONFIRMED</span> <a class="source-link" href="https://www.aljazeera.com/news/2026/4/10/israel-strikes-residential-areas-destroys-homes-in-southern-lebanon">Al Jazeera</a> | <a class="source-link" href="https://www.foxnews.com/live-news/trump-iran-war-strait-hormuz-pakistan-talks-israel-04-11-26">Fox News</a> | <a class="source-link" href="https://www.timesofisrael.com/us-iran-talks-begin-in-pakistan-tehran-demands-control-of-hormuz-truce-in-lebanon/">Times of Israel</a></p>
+</div>
+
+<div class="bluf">
+<h2>BOTTOM LINE UP FRONT (BLUF)</h2>
+<ul>
+<li><strong>US-Iran talks underway in Islamabad.</strong> VP Vance leads delegation with Witkoff and Kushner. First direct US-Iran face-to-face negotiation since 1979. Iran delegation led by Parliament Speaker Ghalibaf and FM Araghchi.</li>
+<li><strong>Ceasefire under severe strain.</strong> Nominal two-week US-Iran ceasefire entered effect ~April 7-8 but contested on multiple fronts. Israel continues Lebanon operations. Iran restricting Hormuz transit.</li>
+<li><strong>Israel struck Lebanon 50+ times in 24 hours.</strong> "Operation Eternal Darkness" continues targeting Hezbollah across southern Lebanon, Beqaa Valley, Sidon, Tyre, and Nabatieh. April 8 "Black Wednesday" killed 303-357 in single day.</li>
+<li><strong>Hormuz commercially paralyzed.</strong> 426 oil tankers and 53 LNG carriers stranded. IRGC enforcing restricted transit. Only Iran-approved routing with active sea-mine risk in primary lanes.</li>
+<li><strong>Iran military severely degraded.</strong> 85%+ of defense industrial base destroyed. 150 warships, all submarines, 97% of naval mines destroyed. 13,000+ targets struck since Feb 28.</li>
+<li><strong>Competing negotiating frameworks.</strong> US 15-point proposal demands zero enrichment + Hormuz reopening. Iran 10-point plan insists Lebanon ceasefire as prerequisite + sanctions removal + enrichment rights.</li>
+<li><strong>Net assessment: Fragile holding pattern, high escalation risk.</strong> Pakistan talks are decisive inflection point. Iranian walkout or IDF escalation could trigger ceasefire collapse within 24-48 hours.</li>
+</ul>
+</div>
+
+<div class="stats-grid">
+<div class="stat-card"><div class="label">Ceasefire Day</div><div class="value amber">4</div></div>
+<div class="stat-card"><div class="label">Talks Status</div><div class="value green">UNDERWAY</div></div>
+<div class="stat-card"><div class="label">Tankers Stranded</div><div class="value red">426+</div></div>
+<div class="stat-card"><div class="label">LNG Carriers Stranded</div><div class="value red">53</div></div>
+<div class="stat-card"><div class="label">Lebanon KIA (Total)</div><div class="value red">1,888+</div></div>
+<div class="stat-card"><div class="label">Iran KIA (Est.)</div><div class="value red">7K-32K</div></div>
+<div class="stat-card"><div class="label">US Troops in Theater</div><div class="value blue">~50,000</div></div>
+<div class="stat-card"><div class="label">Targets Struck (Total)</div><div class="value amber">13,000+</div></div>
+</div>
+
+<section>
+<h2>1. OPERATIONAL STATUS: US/ISRAELI STRIKES (Last 24-48 Hours) <span class="theater-tag tag-iran">IRAN THEATER</span></h2>
+<div class="section-body">
+<div class="event">
+<h3>US-Iran Ceasefire Nominally Halting Direct Strikes <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>The US-Iran ceasefire has nominally halted direct US strikes on Iran as of approximately April 7-8. However, the ceasefire is contested on multiple fronts.</p>
+<p><a class="source-link" href="https://www.foxnews.com/live-news/trump-iran-war-strait-hormuz-pakistan-talks-israel-04-11-26">Fox News Live</a></p>
+</div>
+<div class="event">
+<h3>Israel Launches 50+ Airstrikes Across Lebanon <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>Israel launched over 50 airstrikes across Lebanon within 24 hours (April 10), continuing "Operation Eternal Darkness" targeting Hezbollah across southern Lebanon, Beqaa Valley, Sidon, Tyre, and Nabatieh. Strikes at reduced intensity following direct US pressure on Netanyahu.</p>
+<p><a class="source-link" href="https://www.timesofisrael.com/liveblog-april-09-2026/">Times of Israel</a></p>
+</div>
+<div class="event">
+<h3>"Black Wednesday" &mdash; April 8 Mass Strike Event <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>On April 8, Israel conducted its largest single-day strike package since the war began &mdash; over 100 strikes within a 10-minute window &mdash; killing at least 303-357 people in Lebanon. The IDF called this Operation Eternal Darkness and claimed 180 Hezbollah fighters killed alongside civilians.</p>
+<p><a class="source-link" href="https://www.hrw.org">Human Rights Watch</a></p>
+</div>
+<div class="event">
+<h3>13,000+ Targets Struck in Iran Since Feb 28 <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>As of April 6, the combined force had struck over 13,000 targets in Iran including 2,000+ C2 nodes, 1,500+ air defense sites, 1,450+ defense industrial targets, 800+ drone assets, 600+ naval targets, and 450+ ballistic missile targets. US State Department assesses 85%+ of Iran's defense industrial base destroyed.</p>
+<p><a class="source-link" href="https://www.criticalthreats.org/analysis/iran-update-evening-special-report-april-9-2026">ISW/Critical Threats</a></p>
+</div>
+<div class="event">
+<h3>IRGC Drone Shot Down Over Fars Province <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>An IRGC Hermes 900 drone (Israeli/US origin) was shot down over Fars Province on April 8, with Iran declaring any overflight a ceasefire violation.</p>
+<p><a class="source-link" href="https://www.cbsnews.com/live-updates/iran-trump-ceasefire-strait-hormuz-israel-war-hezbollah-continues/">CBS News</a></p>
+</div>
+</div>
+</section>
+
+<section>
+<h2>2. IRANIAN MILITARY RESPONSE AND POSTURE <span class="theater-tag tag-hormuz">MARITIME</span></h2>
+<div class="section-body">
+<div class="event">
+<h3>Hormuz Strait Suspended &mdash; 426 Tankers Stranded <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>Iran has suspended tanker traffic through the Strait of Hormuz, using it as primary leverage in the Pakistan talks. IRGC forces enforcing restricted transit. Backlog of 426 oil tankers and 53 LNG carriers stranded. Transit reduced to IRGC-approved routing with active sea-mine risk.</p>
+<p><a class="source-link" href="https://www.cnn.com">CNN</a> | <a class="source-link" href="https://x.com/marketsday/status/2042098423223218431">MarketDay/X</a></p>
+</div>
+<div class="event">
+<h3>Iran Military Severely Degraded <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>85%+ of defense industrial base destroyed. Combined force destroyed 150 Iranian warships, all submarines, and 97% of naval mine stockpile. Khondab heavy water plant non-operational. Key leadership eliminated: IRGC Intel chief Khademi, Ballistic Missile chief Atimi, Quds Force commander Yazdan Mir, Supreme Leader Khamenei (Feb 28).</p>
+<p><a class="source-link" href="https://www.criticalthreats.org/analysis/iran-update-evening-special-report-april-9-2026">ISW/Critical Threats</a></p>
+</div>
+<div class="event">
+<h3>Ghalibaf: Ceasefire "Unreasonable" &mdash; Three US Violations Cited <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>Iran's Parliament Speaker Ghalibaf declared ceasefire and negotiations "unreasonable," citing: (1) continued Israeli strikes on Hezbollah in Lebanon, (2) alleged US drone overflight post-ceasefire, (3) US rejection of Iranian nuclear enrichment capability.</p>
+<p><a class="source-link" href="https://www.cbsnews.com/live-updates/iran-trump-ceasefire-strait-hormuz-israel-war-hezbollah-continues/">CBS News</a></p>
+</div>
+<div class="event">
+<h3>Bushehr Nuclear Plant Vicinity Struck Four Times <span class="badge badge-developing">DEVELOPING</span></h3>
+<p>Bushehr Nuclear Power Plant (Unit 1, 915-MWe VVER-1000) sustained a strike "close to premises" on April 4, fourth such incident. No radiation increase reported. IAEA monitoring. Parchin Military Complex damaged per satellite imagery.</p>
+<p><a class="source-link" href="https://www.ans.org/news/2026-04-06/article-7911/iaea-provides-updates-on-iran-nuclear-facilities/">ANS/IAEA</a></p>
+</div>
+<div class="event">
+<h3>Iranian Leadership Vacuum &mdash; Interim Council in Place <span class="badge badge-developing">DEVELOPING</span></h3>
+<p>Iran's internal command structure decentralized following Khamenei's death Feb 28. Three-person interim leadership council in place but power "diffuse" across IRGC factions, Assembly of Experts, and political figures. No successor formally designated.</p>
+<p><a class="source-link" href="https://www.iranintl.com/en/202603020285">Iran International</a></p>
+</div>
+</div>
+</section>
+
+<section>
+<h2>3. DIPLOMATIC DEVELOPMENTS &mdash; ISLAMABAD TALKS <span class="theater-tag tag-diplo">DIPLOMACY</span></h2>
+<div class="section-body">
+<div class="event">
+<h3>US-Iran Direct Talks Underway &mdash; First Since 1979 <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>US-Iran direct ceasefire negotiations underway in Islamabad, Pakistan. First direct US-Iran face-to-face negotiation since the 1979 Islamic Revolution and first official talks since the 2015 JCPOA.</p>
+<p><a class="source-link" href="https://www.aljazeera.com/news/2026/4/10/israel-strikes-residential-areas-destroys-homes-in-southern-lebanon">Al Jazeera</a></p>
+</div>
+<div class="event">
+<h3>US Delegation: Vance, Witkoff, Kushner <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>VP JD Vance (lead), Special Envoy Steve Witkoff, Jared Kushner. Vance greeted by Pakistan Army Chief Asim Munir and FM Dar. Bilateral held with PM Shehbaz Sharif prior to Iran talks.</p>
+<p><a class="source-link" href="https://www.cnn.com">CNN</a></p>
+</div>
+<div class="event">
+<h3>Iran Delegation: Ghalibaf and Araghchi <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>Iran delegation led by Parliament Speaker Ghalibaf and FM Abbas Araghchi. Araghchi stated Iran entered negotiations with "deep distrust." Iran presented demands as red lines.</p>
+<p><a class="source-link" href="https://www.timesofisrael.com/us-iran-talks-begin-in-pakistan-tehran-demands-control-of-hormuz-truce-in-lebanon/">Times of Israel</a></p>
+</div>
+<div class="event">
+<h3>Competing Frameworks: US 15-Point vs Iran 10-Point <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>US 15-point proposal: restricts Iran's nuclear program (zero enrichment), Hormuz reopening, sanctions relief conditioned on compliance. Iran 10-point proposal: Lebanon ceasefire as prerequisite, sanctions removal, some nuclear enrichment rights retained.</p>
+<p><a class="source-link" href="https://www.cbsnews.com/live-updates/iran-trump-ceasefire-strait-hormuz-israel-war-hezbollah-continues/">CBS News</a></p>
+</div>
+<div class="event">
+<h3>Israel-Lebanon Talks Set for Washington Next Week <span class="badge badge-confirmed">CONFIRMED</span></h3>
+<p>Israeli-Lebanese diplomatic talks scheduled for Washington next week. Hezbollah not included. Structural problem: Hezbollah continues firing rockets into northern Israel citing ceasefire violations. Israel killed 13 Lebanese State Security officers in airstrike on Nabatieh government building Apr 10.</p>
+<p><a class="source-link" href="https://www.aljazeera.com/video/newsfeed/2026/4/10/israeli-strike-on-government-building-kills-lebanese-officers">Al Jazeera</a></p>
+</div>
+</div>
+</section>
+
+<section>
+<h2>4. CASUALTY AND DAMAGE ASSESSMENTS</h2>
+<div class="section-body">
+<table>
+<tr><th>Category</th><th>Figure</th><th>Confidence</th></tr>
+<tr><td>Iran Deaths (Government)</td><td>~3,117</td><td><span class="badge badge-confirmed">CONFIRMED</span> (assessed undercount)</td></tr>
+<tr><td>Iran Deaths (HRANA)</td><td>7,007 confirmed, 11,744 under review</td><td><span class="badge badge-confirmed">CONFIRMED</span></td></tr>
+<tr><td>Iran Deaths (Non-gov Health)</td><td>~32,000</td><td><span class="badge badge-claim">UNVERIFIED</span></td></tr>
+<tr><td>Iran Displaced</td><td>~3.2 million</td><td><span class="badge badge-confirmed">CONFIRMED</span></td></tr>
+<tr><td>Lebanon Deaths (since Mar 2)</td><td>1,888+</td><td><span class="badge badge-confirmed">CONFIRMED</span></td></tr>
+<tr><td>Lebanon Displaced</td><td>1 million+</td><td><span class="badge badge-confirmed">CONFIRMED</span></td></tr>
+<tr><td>Israel Deaths</td><td>38</td><td><span class="badge badge-confirmed">CONFIRMED</span></td></tr>
+<tr><td>US Military KIA</td><td>13</td><td><span class="badge badge-confirmed">CONFIRMED</span></td></tr>
+<tr><td>US Military WIA</td><td>381</td><td><span class="badge badge-confirmed">CONFIRMED</span></td></tr>
+<tr><td>Iran Defense Industrial Base</td><td>85%+ destroyed</td><td><span class="badge badge-confirmed">CONFIRMED</span></td></tr>
+<tr><td>Iran Warships Destroyed</td><td>150</td><td><span class="badge badge-confirmed">CONFIRMED</span></td></tr>
+<tr><td>Iran Submarines</td><td>All destroyed</td><td><span class="badge badge-confirmed">CONFIRMED</span></td></tr>
+<tr><td>GCC States Struck</td><td>All 6 (SA, UAE, KW, BH, QA, OM)</td><td><span class="badge badge-confirmed">CONFIRMED</span></td></tr>
+</table>
+</div>
+</section>
+
+<section>
+<h2>5. KEY INDICATORS TO WATCH (Next 24 Hours)</h2>
+<div class="section-body">
+<table>
+<tr><th>Indicator</th><th>Significance</th><th>Watch For</th></tr>
+<tr><td>Pakistan talks outcome</td><td>Determines if ceasefire survives</td><td>Joint statement, framework agreement, or Iranian walkout</td></tr>
+<tr><td>Hormuz transit status</td><td>Iran's primary leverage; global energy</td><td>IRGC announcements on resumption or further restriction</td></tr>
+<tr><td>IDF Lebanon operational tempo</td><td>Iran's stated red line for ceasefire</td><td>Strike density in Beirut vs. south Lebanon</td></tr>
+<tr><td>Iraqi militia activation</td><td>Could expand conflict footprint</td><td>Attacks by Kataib Sayyid al Shuhada or Nujaba</td></tr>
+<tr><td>Iranian nuclear enrichment posture</td><td>Core US demand; dealbreaker</td><td>Iranian statements on zero-enrichment conditions</td></tr>
+<tr><td>Hezbollah rocket fire cadence</td><td>Indicator of Iran restraint signal</td><td>Volume and targeting into northern Israel</td></tr>
+<tr><td>Iran succession signal</td><td>Affects decision-making coherence</td><td>Assembly of Experts or IRGC factional messaging</td></tr>
+<tr><td>Trump social media posts</td><td>Sets US escalation/de-escalation signals</td><td>Threats to resume strikes if Hormuz not opened</td></tr>
+</table>
+</div>
+</section>
+
+<section>
+<h2>6. ASSESSMENT: FRAGILE HOLDING PATTERN WITH HIGH ESCALATION RISK <span class="theater-tag tag-ceasefire">ASSESSMENT</span></h2>
+<div class="section-body">
+<div class="event">
+<h3>Overall Trajectory <span class="badge badge-assessment">HIGH CONFIDENCE</span></h3>
+<p>The conflict is neither clearly escalating nor de-escalating &mdash; it is in a contested holding pattern defined by simultaneous diplomatic and military activity pulling in opposite directions.</p>
+</div>
+<div class="event">
+<h3>Factors Suggesting De-Escalation</h3>
+<p>US-Iran direct talks in Islamabad represent most significant diplomatic breakthrough since 1979. Both sides showed up despite mutual accusations. Iran accepted partial reduction in Israeli Lebanon strikes as sufficient to attend. Trump expressed public optimism. Iran's military capacity severely degraded, creating structural incentive to negotiate.</p>
+</div>
+<div class="event">
+<h3>Factors Sustaining Escalation Risk</h3>
+<p>Lebanon remains critical fault line &mdash; Israel has not halted operations and rejects Lebanon as part of deal. Hormuz remains partially blocked. Iran entered with "deep distrust" and red lines. Iraqi militias called to arms. Iranian leadership vacuum creates unpredictability. Gulf states privately urging US to continue fighting.</p>
+</div>
+<div class="event">
+<h3>Net Assessment</h3>
+<p>Next 24 hours are a genuine inflection point. Framework agreement from Islamabad shifts trajectory toward managed de-escalation. Iranian walkout, major militia attack, or IRGC direct-fire action would trigger resumption of US strikes. Hormuz is the forcing function &mdash; Trump made it a public red line, Iran holds it as last major leverage.</p>
+</div>
+</div>
+</section>
+
+<section>
+<h2>7. WATCHPOINTS &amp; FORWARD INDICATORS</h2>
+<div class="section-body">
+<div class="watchpoint">
+<h4>&#9888; WATCHPOINT 1: Islamabad Talks Outcome</h4>
+<p>US-Iran direct talks are the decisive inflection point. Framework agreement = managed de-escalation. Iranian walkout = ceasefire collapse within 48-72 hours. Monitor IRNA, Press TV, and White House statements.</p>
+</div>
+<div class="watchpoint">
+<h4>&#9888; WATCHPOINT 2: Hormuz Transit Resumption</h4>
+<p>426 oil tankers stranded. First major Western tanker transiting without IRGC coordination = critical de-escalation signal. If tankers continue routing via Cape of Good Hope, economic pressure on Iran escalates.</p>
+</div>
+<div class="watchpoint">
+<h4>&#9888; WATCHPOINT 3: IDF Lebanon Operational Tempo</h4>
+<p>If IDF kills another senior Hezbollah figure or launches mass strike before talks conclude, Iran uses it as justification to withdraw. Next 24 hours of IDF tempo are critical.</p>
+</div>
+<div class="watchpoint">
+<h4>&#9888; WATCHPOINT 4: Iraqi Militia Activation</h4>
+<p>IRGC-affiliated Iraqi militias called for renewed attacks on US/Israeli targets in response to Lebanon strikes. If confirmed mass attacks materialize, US faces pressure to respond &mdash; expanding conflict footprint.</p>
+</div>
+<div class="watchpoint">
+<h4>&#9888; WATCHPOINT 5: Iran Succession Authority</h4>
+<p>No formal successor to Khamenei designated. Power diffuse across IRGC factions. Question: does Ghalibaf's delegation have authority to make binding agreements? Structural unknown that could torpedo any deal.</p>
+</div>
+</div>
+</section>
+
+<div class="source-section">
+<h3>SOURCE INDEX &mdash; All Clickable</h3>
+<div class="source-grid">
+<div class="source-item"><span class="source-cat">WIRE</span><a href="https://www.foxnews.com/live-news/trump-iran-war-strait-hormuz-pakistan-talks-israel-04-11-26">Fox News Live - Apr 11</a></div>
+<div class="source-item"><span class="source-cat">LIVE</span><a href="https://www.timesofisrael.com/us-iran-talks-begin-in-pakistan-tehran-demands-control-of-hormuz-truce-in-lebanon/">Times of Israel - Islamabad Talks</a></div>
+<div class="source-item"><span class="source-cat">LIVE</span><a href="https://www.aljazeera.com/news/2026/4/10/israel-strikes-residential-areas-destroys-homes-in-southern-lebanon">Al Jazeera - Lebanon Strikes</a></div>
+<div class="source-item"><span class="source-cat">ANALYSIS</span><a href="https://www.criticalthreats.org/analysis/iran-update-evening-special-report-april-9-2026">ISW/Critical Threats - Iran Update</a></div>
+<div class="source-item"><span class="source-cat">MEDIA</span><a href="https://www.cbsnews.com/live-updates/iran-trump-ceasefire-strait-hormuz-israel-war-hezbollah-continues/">CBS News Live Updates</a></div>
+<div class="source-item"><span class="source-cat">NUCLEAR</span><a href="https://www.ans.org/news/2026-04-06/article-7911/iaea-provides-updates-on-iran-nuclear-facilities/">ANS/IAEA Nuclear Updates</a></div>
+<div class="source-item"><span class="source-cat">WIKI</span><a href="https://en.wikipedia.org/wiki/2026_Iran_war">Wikipedia - 2026 Iran War</a></div>
+<div class="source-item"><span class="source-cat">HR</span><a href="https://www.hrw.org">Human Rights Watch</a></div>
+<div class="source-item"><span class="source-cat">IRAN</span><a href="https://www.iranintl.com/en/202603020285">Iran International</a></div>
+<div class="source-item"><span class="source-cat">DIPLO</span><a href="https://www.arabnews.com/node/2639516/middle-east">Arab News - Islamabad</a></div>
+<div class="source-item"><span class="source-cat">OSINT</span><a href="https://hengaw.net/en/reports-and-statistics-1/2026/03/article-9">Hengaw Kurdish HR</a></div>
+<div class="source-item"><span class="source-cat">MEDIA</span><a href="https://www.cnn.com">CNN</a></div>
+</div>
+</div>
+
+<footer>
+<p><strong>FIREBRAND INTELLIGENCE</strong> | Daily SITREP &mdash; April 11, 2026</p>
+<p>All-source open intelligence compilation. Every claim sourced with clickable links.</p>
+<p>Confidence badges: <span class="badge badge-confirmed">CONFIRMED</span> = Multi-source verified | <span class="badge badge-likely">LIKELY</span> = Credible single source + corroboration | <span class="badge badge-claim">CLAIM</span> = Single party claim | <span class="badge badge-assessment">ASSESSMENT</span> = Analyst judgment</p>
+<p>&copy; 2026 The Firebrand Project. OSINT compilation for informational purposes.</p>
+</footer>
+
+</div>
+</body>
+</html>
