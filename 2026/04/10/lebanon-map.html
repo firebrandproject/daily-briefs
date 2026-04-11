@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lebanon Theater — IDF Ground Advance Map</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#1a1a2e; font-family:'Inter',system-ui,sans-serif; }
+#map { width:100%; height:100vh; }
+.map-title { background:rgba(26,26,46,0.9); color:#e0e0e0; padding:10px 14px; border-radius:6px; border:1px solid #2a2a4a; }
+.map-title h3 { font-size:14px; color:#20808D; margin-bottom:2px; }
+.map-title .subtitle { font-size:11px; color:#8899aa; }
+.map-title .classification { font-size:10px; color:#FFC553; margin-top:4px; }
+.map-legend { background:rgba(26,26,46,0.92); color:#e0e0e0; padding:10px 12px; border-radius:6px; border:1px solid #2a2a4a; font-size:11px; max-width:200px; }
+.map-legend h4 { font-size:12px; margin-bottom:6px; color:#20808D; }
+.legend-item { display:flex; align-items:center; gap:6px; margin:3px 0; }
+.legend-color { width:12px; height:12px; border-radius:2px; border:1px solid rgba(255,255,255,0.2); }
+.coord-display { background:rgba(26,26,46,0.85); color:#8899aa; padding:4px 8px; border-radius:4px; font-size:11px; font-family:monospace; }
+.leaflet-popup-content-wrapper { background:#16213e; color:#e0e0e0; border:1px solid #2a2a4a; border-radius:6px; }
+.leaflet-popup-tip { background:#16213e; }
+.leaflet-popup-content { font-size:12px; line-height:1.5; }
+.strike-popup .popup-header { font-weight:700; color:#20808D; font-size:13px; margin-bottom:4px; }
+.strike-popup .popup-detail { color:#8899aa; font-size:11px; }
+.strike-popup .popup-detail strong { color:#e0e0e0; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+var map = L.map('map', { center: [33.28, 35.52], zoom: 10, zoomControl: true });
+var dark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { attribution: '\u00a9 CartoDB', maxZoom: 20 }).addTo(map);
+var sat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: '\u00a9 Esri', maxZoom: 18 });
+var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '\u00a9 OSM', maxZoom: 19 });
+var topo = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', { attribution: '\u00a9 OpenTopoMap', maxZoom: 17 });
+
+// Layer groups
+var strikeLayer = L.layerGroup().addTo(map);
+var unitLayer = L.layerGroup().addTo(map);
+var frontLineLayer = L.layerGroup().addTo(map);
+var phaseLayer = L.layerGroup().addTo(map);
+
+L.control.layers(
+  { 'Dark (Tactical)': dark, 'Satellite': sat, 'OSM': osm, 'Topographic': topo },
+  { 'Strikes': strikeLayer, 'Unit Positions': unitLayer, 'Front Lines': frontLineLayer, 'IDF Phases': phaseLayer },
+  { collapsed: false, position: 'topright' }
+).addTo(map);
+
+L.control.scale({ imperial: true, metric: true, position: 'bottomleft' }).addTo(map);
+
+// Coordinate display
+var coordCtrl = L.control({ position: 'bottomright' });
+coordCtrl.onAdd = function() { var d = L.DomUtil.create('div','coord-display'); d.innerHTML = '\u2014'; return d; };
+coordCtrl.addTo(map);
+map.on('mousemove', function(e) { document.querySelector('.coord-display').innerHTML = e.latlng.lat.toFixed(6) + '\u00b0, ' + e.latlng.lng.toFixed(6) + '\u00b0'; });
+
+// Title cartouche
+var titleCtrl = L.control({ position: 'topleft' });
+titleCtrl.onAdd = function() {
+  var d = L.DomUtil.create('div','map-title');
+  d.innerHTML = '<h3>LEBANON THEATER \u2014 IDF Ground Advance</h3><div class="subtitle">Operation Epic Fury \u2014 Day 44 | As of 10 APR 2026 2200 UTC</div><div class="classification">OSINT \u2014 UNCLASSIFIED | Firebrand Intelligence</div>';
+  return d;
+};
+titleCtrl.addTo(map);
+
+    // ============================================================
+    // PHASE POLYGONS (approximate operational zones)
+    // ============================================================
+    var phase1Coords = [
+      [33.095, 35.10], [33.095, 35.60], [33.12, 35.60], [33.12, 35.10]
+    ];
+    var phase2Coords = [
+      [33.12, 35.10], [33.12, 35.60], [33.18, 35.60], [33.18, 35.10]
+    ];
+    var phase3Coords = [
+      [33.18, 35.10], [33.18, 35.60], [33.27, 35.60], [33.27, 35.10]
+    ];
+
+    L.polygon(phase1Coords, {
+      color: '#ef4444', fillColor: '#ef4444', fillOpacity: 0.15, weight: 1, dashArray: '4 4'
+    }).addTo(phaseLayer).bindPopup('<div class="strike-popup"><div class="popup-header">Phase 1 — Border Strip</div><div class="popup-detail">Initial clearance zone. Secured early April.</div></div>');
+
+    L.polygon(phase2Coords, {
+      color: '#f59e0b', fillColor: '#f59e0b', fillOpacity: 0.12, weight: 1, dashArray: '4 4'
+    }).addTo(phaseLayer).bindPopup('<div class="strike-popup"><div class="popup-header">Phase 2 — Expanded Zone</div><div class="popup-detail">Expanded operations south of Nabatieh.</div></div>');
+
+    L.polygon(phase3Coords, {
+      color: '#22c55e', fillColor: '#22c55e', fillOpacity: 0.10, weight: 1, dashArray: '4 4'
+    }).addTo(phaseLayer).bindPopup('<div class="strike-popup"><div class="popup-header">Phase 3 — Litani Push (CURRENT)</div><div class="popup-detail">IDF advancing toward Litani River. Prolonged ops approved by Chief of Staff.</div></div>');
+
+        // ============================================================
+    // STRIKE MARKERS
+    // ============================================================
+    function strikeIcon(color) {
+      return L.divIcon({
+        className: '',
+        html: '<div style="width:10px;height:10px;background:'+color+';border:2px solid #fff;border-radius:50%;box-shadow:0 0 6px '+color+'"></div>',
+        iconSize: [10,10], iconAnchor: [5,5]
+      });
+    }
+
+    // Makled KIA — Beirut Dahiyeh
+    L.marker([33.83, 35.50], {icon: strikeIcon('#ef4444')}).addTo(strikeLayer)
+      .bindPopup('<div class="strike-popup"><div class="popup-header">HZB Intel Chief Hussain Makled — KIA</div><div class="popup-detail">Killed in IDF strike, Apr 9-10<br><strong>CONFIRMED</strong></div></div>');
+
+    // Radwan Force Commander KIA — South Lebanon
+    L.marker([33.12, 35.42], {icon: strikeIcon('#ef4444')}).addTo(strikeLayer)
+      .bindPopup('<div class="strike-popup"><div class="popup-header">Radwan Force Commander — KIA</div><div class="popup-detail">Killed in separate strike, South Lebanon<br><strong>CONFIRMED</strong></div></div>');
+
+    // 2 Paramedics KIA — Bint Jbeil
+    L.marker([33.12, 35.43], {icon: strikeIcon('#f59e0b')}).addTo(strikeLayer)
+      .bindPopup('<div class="strike-popup"><div class="popup-header">2 Lebanese Paramedics — KIA</div><div class="popup-detail">Killed in Bint Jbeil airstrike. Israel accused HZB of military use of ambulances.<br><strong>CONFIRMED</strong></div></div>');
+
+    // IDF Soldier KIA — South Lebanon
+    L.marker([33.10, 35.35], {icon: strikeIcon('#3b82f6')}).addTo(strikeLayer)
+      .bindPopup('<div class="strike-popup"><div class="popup-header">IDF Soldier — 1 KIA, 7 WIA</div><div class="popup-detail">Killed by Hezbollah attack in South Lebanon, Apr 9-10<br><strong>CONFIRMED</strong></div></div>');
+
+    // Ali Yusuf Harshi (Qassem nephew) KIA
+    L.marker([33.85, 35.48], {icon: strikeIcon('#ef4444')}).addTo(strikeLayer)
+      .bindPopup('<div class="strike-popup"><div class="popup-header">Ali Yusuf Harshi (Qassem nephew) — KIA</div><div class="popup-detail">Personal secretary to Naim Qassem. Confirmed by IDF and Reuters.<br><strong>CONFIRMED</strong></div></div>');
+
+          // ============================================================
+    // FRONT LINES — IDF Advance Axes
+    // ============================================================
+    // Main advance axis: border → Aitaroun (bypass) → Wadi al-Salouqi → al-Bayada → Qantara → Litani
+    L.polyline([
+      [33.095, 35.28], [33.105, 35.32], [33.12, 35.38],
+      [33.15, 35.40], [33.18, 35.42], [33.22, 35.44], [33.26, 35.45]
+    ], { color: '#3b82f6', weight: 3, dashArray: '8 4', opacity: 0.8 }).addTo(frontLineLayer)
+      .bindPopup('<div class="strike-popup"><div class="popup-header">IDF Ground Advance Axis</div><div class="popup-detail">Bypassed Aitaroun → Wadi al-Salouqi → al-Bayada → Qantara approach → Litani</div></div>');
+
+    // Secondary axis: eastern approach
+    L.polyline([
+      [33.095, 35.50], [33.12, 35.50], [33.16, 35.52], [33.22, 35.50]
+    ], { color: '#3b82f6', weight: 2, dashArray: '6 4', opacity: 0.6 }).addTo(frontLineLayer);
+
+    // Litani River (reference line)
+    L.polyline([
+      [33.27, 35.10], [33.28, 35.25], [33.27, 35.40], [33.26, 35.55], [33.27, 35.65]
+    ], { color: '#06b6d4', weight: 2, opacity: 0.5 }).addTo(frontLineLayer)
+      .bindPopup('<div class="strike-popup"><div class="popup-header">Litani River</div><div class="popup-detail">IDF Phase 3 objective line</div></div>');
+
+          // ============================================================
+    // HZB COUNTERATTACK ARROWS
+    // ============================================================
+    // Rockets to Haifa
+    L.polyline([
+      [33.20, 35.45], [32.82, 35.00]
+    ], { color: '#ef4444', weight: 2, dashArray: '4 6', opacity: 0.6 }).addTo(strikeLayer)
+      .bindPopup('<div class="strike-popup"><div class="popup-header">HZB Rockets → Haifa</div><div class="popup-detail">Ongoing cross-border rocket fire to Haifa and Golan</div></div>');
+
+    // Precision missiles to Ashdod
+    L.polyline([
+      [33.20, 35.45], [31.80, 34.65]
+    ], { color: '#a855f7', weight: 2, dashArray: '4 6', opacity: 0.5 }).addTo(strikeLayer)
+      .bindPopup('<div class="strike-popup"><div class="popup-header">HZB Precision Missiles → Ashdod Naval Base</div><div class="popup-detail">Hezbollah precision strike capability demonstrated</div></div>');
+
+    // Rocket hit on Safed
+    L.marker([32.97, 35.50], {icon: strikeIcon('#ef4444')}).addTo(strikeLayer)
+      .bindPopup('<div class="strike-popup"><div class="popup-header">HZB Rocket Strike — Safed</div><div class="popup-detail">Apr 10: Rocket struck Safed, several injured. Emergency services deployed.<br><strong>CONFIRMED</strong></div></div>');
+
+    // ============================================================
+    // KEY LOCATIONS (unit markers)
+    // ============================================================
+    function locIcon(label, bg) {
+      return L.divIcon({
+        className: '',
+        html: '<div style="background:'+bg+';color:#e0e0e0;padding:2px 6px;border-radius:3px;font-size:9px;white-space:nowrap;border:1px solid rgba(255,255,255,0.3);">'+label+'</div>',
+        iconSize: [0,0], iconAnchor: [0,0]
+      });
+    }
+
+    L.marker([33.89, 35.50], {icon: locIcon('BEIRUT (Dahiyeh)', '#7f1d1d')}).addTo(unitLayer);
+    L.marker([33.12, 35.42], {icon: locIcon('BINT JBEIL', '#713f12')}).addTo(unitLayer);
+    L.marker([33.105, 35.32], {icon: locIcon('AITAROUN (bypassed)', '#1e3a5f')}).addTo(unitLayer);
+    L.marker([33.16, 35.40], {icon: locIcon('WADI AL-SALOUQI', '#1e3a5f')}).addTo(unitLayer);
+    L.marker([33.20, 35.42], {icon: locIcon('AL-BAYADA', '#1e3a5f')}).addTo(unitLayer);
+    L.marker([33.24, 35.44], {icon: locIcon('QANTARA APPROACH', '#1e3a5f')}).addTo(unitLayer);
+    L.marker([33.37, 35.48], {icon: locIcon('NABATIEH', '#713f12')}).addTo(unitLayer);
+    L.marker([34.00, 36.20], {icon: locIcon('BAALBEK', '#581c87')}).addTo(unitLayer);
+
+        // ============================================================
+    // LEGEND
+    // ============================================================
+    var legendCtrl = L.control({ position: 'bottomleft' });
+    legendCtrl.onAdd = function() {
+      var d = L.DomUtil.create('div','map-legend');
+      d.innerHTML = '<h4>LEGEND</h4>' +
+        '<div class="legend-item"><span class="legend-color" style="background:#ef4444"></span> Airstrike / KIA</div>' +
+        '<div class="legend-item"><span class="legend-color" style="background:#f59e0b"></span> Civilian Casualty</div>' +
+        '<div class="legend-item"><span class="legend-color" style="background:#3b82f6"></span> IDF Casualty</div>' +
+        '<div class="legend-item"><span class="legend-color" style="background:#a855f7"></span> HZB Precision Strike</div>' +
+        '<div class="legend-item"><span class="legend-color" style="background:#ef4444;opacity:0.15"></span> Phase 1 — Border Strip</div>' +
+        '<div class="legend-item"><span class="legend-color" style="background:#f59e0b;opacity:0.15"></span> Phase 2 — Expanded Zone</div>' +
+        '<div class="legend-item"><span class="legend-color" style="background:#22c55e;opacity:0.15"></span> Phase 3 — Litani Push</div>' +
+        '<div class="legend-item"><span class="legend-color" style="background:#3b82f6;border:none;height:2px;margin-top:5px"></span> IDF Advance Axis</div>' +
+        '<div class="legend-item"><span class="legend-color" style="background:#06b6d4;border:none;height:2px;margin-top:5px"></span> Litani River</div>';
+      return d;
+    };
+    legendCtrl.addTo(map);
+
+    </script>
+</body>
+</html>
