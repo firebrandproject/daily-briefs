@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Platform Formatter | Firebrand Intelligence Tools | VLK</title>
+<style>
+  :root {
+    --bg: #0a0e17;
+    --card: #111827;
+    --border: #1e293b;
+    --accent: #f59e0b;
+    --red: #ef4444;
+    --green: #22c55e;
+    --blue: #3b82f6;
+    --cyan: #06b6d4;
+    --purple: #a855f7;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.6;
+  }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+  header {
+    background: linear-gradient(135deg, #0f172a, #1e1b4b);
+    border-bottom: 3px solid var(--accent);
+    padding: 30px;
+    margin-bottom: 24px;
+  }
+
+  header h1 {
+    font-size: 1.8em;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+
+  header .subtitle {
+    color: var(--muted);
+    font-size: 0.95em;
+    margin-top: 4px;
+  }
+
+  .update-bar {
+    background: #1e293b;
+    border-left: 4px solid var(--cyan);
+    padding: 10px 16px;
+    margin-bottom: 20px;
+    font-size: 0.85em;
+    color: var(--cyan);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Input Section */
+  .input-section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  .input-section h2 {
+    color: var(--accent);
+    margin-bottom: 12px;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .input-section label {
+    display: block;
+    color: var(--muted);
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    margin-top: 16px;
+  }
+
+  .input-section label:first-of-type { margin-top: 0; }
+
+  #article-input {
+    width: 100%;
+    min-height: 300px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 0.95em;
+    padding: 16px;
+    resize: vertical;
+    line-height: 1.7;
+  }
+
+  #article-input:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  #article-input::placeholder { color: #4a5568; }
+
+  .controls {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .controls select, .controls input {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-family: inherit;
+  }
+
+  .controls select:focus, .controls input:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  button.primary {
+    background: linear-gradient(135deg, #b45309, #d97706);
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 4px;
+    font-size: 0.95em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  button.primary:hover {
+    background: linear-gradient(135deg, #d97706, #f59e0b);
+    transform: translateY(-1px);
+  }
+
+  button.secondary {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  button.secondary:hover {
+    background: rgba(245, 158, 11, 0.1);
+  }
+
+  /* Output Section */
+  .output-panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 900px) {
+    .output-panels { grid-template-columns: 1fr; }
+  }
+
+  .output-panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .panel-header h3 {
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .panel-header.substack h3 { color: var(--accent); }
+  .panel-header.x-thread h3 { color: var(--cyan); }
+
+  .panel-header button {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .panel-header button:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .panel-body {
+    padding: 20px;
+    max-height: 600px;
+    overflow-y: auto;
+  }
+
+  .panel-body pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 0.82em;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* Preview panel */
+  .preview-section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  .preview-header {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .preview-header h3 {
+    color: var(--green);
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .preview-body {
+    padding: 30px 40px;
+    background: #fff;
+    color: #1a1a1a;
+    font-family: 'Charter', 'Georgia', serif;
+    line-height: 1.8;
+    max-height: 600px;
+    overflow-y: auto;
+  }
+
+  .preview-body h2 {
+    font-size: 1.4em;
+    margin: 1.5em 0 0.5em;
+    color: #111;
+  }
+
+  .preview-body p {
+    margin-bottom: 1em;
+    font-size: 1.05em;
+  }
+
+  .preview-body blockquote {
+    border-left: 3px solid #d97706;
+    padding-left: 16px;
+    margin: 1.2em 0;
+    color: #444;
+    font-style: italic;
+  }
+
+  /* X Thread preview */
+  .x-preview {
+    padding: 20px;
+  }
+
+  .tweet-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+
+  .tweet-card .tweet-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .tweet-card .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--red));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9em;
+    color: #fff;
+  }
+
+  .tweet-card .handle {
+    color: var(--muted);
+    font-size: 0.85em;
+  }
+
+  .tweet-card .handle strong {
+    color: var(--text);
+  }
+
+  .tweet-card .tweet-text {
+    font-size: 0.95em;
+    line-height: 1.5;
+  }
+
+  .tweet-card .char-count {
+    text-align: right;
+    font-size: 0.75em;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+
+  .tweet-card .char-count.over { color: var(--red); }
+
+  .thread-line {
+    width: 2px;
+    height: 12px;
+    background: var(--border);
+    margin-left: 19px;
+  }
+
+  /* Status */
+  .status-bar {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 24px;
+    font-size: 0.8em;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .status-bar .stat-value { color: var(--text); font-weight: 700; }
+  .status-bar .stat-value.ok { color: var(--green); }
+  .status-bar .stat-value.warn { color: var(--accent); }
+  .status-bar .stat-value.bad { color: var(--red); }
+
+  /* Tabs */
+  .tab-bar {
+    display: flex;
+    gap: 0;
+    margin-bottom: 0;
+  }
+
+  .tab-bar button {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-bottom: none;
+    color: var(--muted);
+    padding: 10px 20px;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 4px 4px 0 0;
+    transition: all 0.2s;
+  }
+
+  .tab-bar button.active {
+    background: var(--card);
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--muted);
+    font-size: 0.75em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-top: 1px solid var(--border);
+  }
+
+  footer span.vlk { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>⚒ Platform Formatter</h1>
+    <div class="subtitle">VLK Build Item #4 — Article Composer Pipeline — Firebrand Intelligence</div>
+  </header>
+
+  <div class="update-bar">
+    <span>TOOL: PLATFORM-FORMATTER v1.0 | OWNER: VLK (Vulkan) | SPEC-REF: ARTICLE-COMPOSER.md §VULKAN COLLABORATION REQUIREMENTS</span>
+    <span>D+44</span>
+  </div>
+
+  <!-- INPUT -->
+  <div class="input-section">
+    <h2>▶ Article Input</h2>
+
+    abel for="headline-input">Headline</label>
+    <input type="text" id="headline-input" placeholder="Enter article headline" style="width:100%; margin-bottom: 8px;">
+
+    abel for="series-select">Series</label>
+    <select id="series-select">
+      <option value="iran-war">Iran War Coverage</option>
+      <option value="under-fire">Under Fire</option>
+      <option value="deep-dives">Deep Dives</option>
+      <option value="kushner-files">The Kushner Files</option>
+      <option value="dialogue">Dialogue</option>
+      <option value="global-wars">Global Wars</option>
+      <option value="friday-rant">Friday Rant</option>
+    </select>
+
+    abel for="cta-select">CTA Variant</label>
+    <select id="cta-select">
+      <option value="1">Subscribe Push</option>
+      <option value="2">Share Push</option>
+      <option value="3">Receipt Drop</option>
+      <option value="4">Series Hook</option>
+      <option value="5">Engagement</option>
+    </select>
+
+    abel for="handle-input">X Handle</label>
+    <input type="text" id="handle-input" value="@fiaborern" placeholder="@handle" style="width: 200px;">
+
+    abel for="article-input">Article Body</label>
+    <textarea id="article-input" placeholder="Paste your composed article here.&#10;
