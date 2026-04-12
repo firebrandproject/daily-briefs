@@ -1,0 +1,16 @@
+{
+  "brief_id": "EPIC-FURY-20260411",
+  "generated_by": "VULKAN",
+  "spec_ref": "DAILY-BRIEF-SPEC.md v1.0 Section 3.5",
+  "map_center": {"lat": 32.0, "lon": 52.0, "zoom": 4},
+  "markers": [
+    {"id": "M001", "name": "Shahreza FOB", "lat": 32.0408, "lon": 51.8663, "theater": "Iran-Shahreza", "event_type": "strike", "description": "Forward Operating Base Shahreza — site of confirmed MC-130J and MH-6M aircraft wreckage; attributed to US AFSOC/160th SOAR strike operations.", "confidence_tier": "T1", "source_ref": "A-001", "date": "2026-04-10"},
+    {"id": "M002", "name": "Strait of Hormuz", "lat": 26.5667, "lon": 56.25, "theater": "Gulf-Maritime", "event_type": "chokepoint", "description": "Strategic maritime chokepoint. Approx. 21% of global oil transit. Elevated IRGCN patrol activity reported following Shahreza strikes. US 5th Fleet assets on heightened readiness.", "confidence_tier": "T2", "source_ref": "A-002", "date": "2026-04-11"},
+    {"id": "M003", "name": "Islamabad", "lat": 33.6844, "lon": 73.0479, "theater": "Pakistan-Islamabad", "event_type": "poi", "description": "Pakistani capital. Inter-Services Intelligence and foreign ministry signaling observed in response to Gulf escalation. GHQ Rawalpindi contingency posture under assessment.", "confidence_tier": "T3", "source_ref": "A-007", "date": "2026-04-11"},
+    {"id": "M004", "name": "Southern Lebanon", "lat": 33.2705, "lon": 35.2037, "theater": "Israel-Lebanon-Gaza", "event_type": "monitoring", "description": "Ceasefire monitoring zone. UNIFIL and IDF observation posts active. Hezbollah rearmament intelligence reporting circulating. Ceasefire technically holding but fragile.", "confidence_tier": "T2", "source_ref": "A-008", "date": "2026-04-11"},
+    {"id": "M005", "name": "Gaza — Beit Hanoun", "lat": 31.5467, "lon": 34.5331, "theater": "Israel-Lebanon-Gaza", "event_type": "conflict", "description": "IDF operations continue in Beit Hanoun corridor. Humanitarian access restricted to Kerem Abu Salem crossing only.", "confidence_tier": "T2", "source_ref": "A-010", "date": "2026-04-11"},
+    {"id": "M006", "name": "Taipei", "lat": 25.0330, "lon": 121.5654, "theater": "Wider-Watch-Indo-Pacific", "event_type": "monitoring", "description": "PLA Eastern Theater Command conducted 6 ADIZ incursions in 72h window. Taiwan MOD issued standard intercept notifications.", "confidence_tier": "T3", "source_ref": "A-011", "date": "2026-04-11"},
+    {"id": "M007", "name": "South China Sea — Spratly Chain", "lat": 10.0, "lon": 114.0, "theater": "Wider-Watch-Indo-Pacific", "event_type": "movement", "description": "PLAN CV-17 Shandong carrier group transiting Spratly chain. Philippines Coast Guard tracking.", "confidence_tier": "T3", "source_ref": "A-012", "date": "2026-04-10"},
+    {"id": "M008", "name": "Donetsk Front Line", "lat": 48.0159, "lon": 37.8028, "theater": "Wider-Watch-Ukraine", "event_type": "conflict", "description": "Russian artillery tempo elevated along Donetsk axis. Ukrainian drone strikes on Mariupol logistics hub confirmed by multiple OSINT channels.", "confidence_tier": "T1", "source_ref": "A-013", "date": "2026-04-11"}
+  ]
+}
