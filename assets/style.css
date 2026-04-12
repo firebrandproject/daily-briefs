@@ -1,0 +1,534 @@
+/* ============================================================
+   FIREBRAND INTELLIGENCE — Shared Stylesheet
+   Used by: Daily SITREPs, Fulgrim Articles, all brief types
+   ============================================================ */
+
+/* ---------------------------------------------------------
+   1. CSS CUSTOM PROPERTIES (Design Tokens)
+   --------------------------------------------------------- */
+:root {
+  /* Backgrounds */
+  --bg: #0a0e17;
+  --card: #111827;
+  --border: #1e293b;
+
+  /* Accent & Signal Colors */
+  --accent: #f59e0b;
+  --red: #ef4444;
+  --green: #22c55e;
+  --blue: #3b82f6;
+  --cyan: #06b6d4;
+  --purple: #a855f7;
+
+  /* Text */
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+
+  /* Confidence Badges */
+  --confirmed: #22c55e;
+  --likely: #f59e0b;
+  --claim: #ef4444;
+  --assessment: #a855f7;
+}
+
+/* ---------------------------------------------------------
+   2. RESET & BASE
+   --------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+/* ---------------------------------------------------------
+   3. LAYOUT
+   --------------------------------------------------------- */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ---------------------------------------------------------
+   4. HEADER
+   --------------------------------------------------------- */
+header {
+  background: linear-gradient(135deg, #0f172a, #1e1b4b);
+  border-bottom: 3px solid var(--accent);
+  padding: 30px;
+  margin-bottom: 24px;
+}
+
+header h1 {
+  font-size: 1.8em;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+header .subtitle {
+  color: var(--muted);
+  font-size: 0.95em;
+  margin-top: 4px;
+}
+
+/* ---------------------------------------------------------
+   5. UPDATE BAR
+   --------------------------------------------------------- */
+.update-bar {
+  background: #1e293b;
+  border-left: 4px solid var(--cyan);
+  padding: 10px 16px;
+  margin-bottom: 20px;
+  font-size: 0.85em;
+  color: var(--cyan);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ---------------------------------------------------------
+   6. FLASH / BREAKING ALERT
+   --------------------------------------------------------- */
+.flash {
+  background: linear-gradient(90deg, #7f1d1d, #450a0a);
+  border: 1px solid #dc2626;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 24px;
+  animation: flash-pulse 3s infinite;
+}
+
+@keyframes flash-pulse {
+  0%, 100% { border-color: #dc2626; }
+  50% { border-color: #f87171; }
+}
+
+/* ---------------------------------------------------------
+   7. BLUF (Bottom Line Up Front)
+   --------------------------------------------------------- */
+.bluf {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.bluf h2 {
+  color: var(--accent);
+  margin-bottom: 12px;
+  font-size: 1.3em;
+}
+
+.bluf ul {
+  list-style: none;
+  padding: 0;
+}
+
+.bluf li {
+  padding: 8px 0;
+  border-bottom: 1px solid #1e293b;
+  position: relative;
+  padding-left: 20px;
+}
+
+.bluf li::before {
+  content: '\25B6';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.7em;
+  top: 11px;
+}
+
+/* ---------------------------------------------------------
+   8. STATS GRID
+   --------------------------------------------------------- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+.stat-card .label {
+  color: var(--muted);
+  font-size: 0.75em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stat-card .value {
+  font-size: 1.8em;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.stat-card .value.red    { color: var(--red); }
+.stat-card .value.green  { color: var(--green); }
+.stat-card .value.blue   { color: var(--blue); }
+.stat-card .value.amber  { color: var(--accent); }
+.stat-card .value.cyan   { color: var(--cyan); }
+.stat-card .value.purple { color: var(--purple); }
+
+/* ---------------------------------------------------------
+   9. SECTIONS (Theater Blocks)
+   --------------------------------------------------------- */
+section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+section h2 {
+  background: #1e293b;
+  padding: 16px 20px;
+  font-size: 1.15em;
+  border-bottom: 1px solid var(--border);
+}
+
+section h2 .theater-tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-size: 0.7em;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.section-body {
+  padding: 20px;
+}
+
+/* ---------------------------------------------------------
+   10. THEATER TAGS
+   --------------------------------------------------------- */
+.tag-iran      { background: #7f1d1d; color: #fca5a5; }
+.tag-lebanon   { background: #713f12; color: #fde68a; }
+.tag-hormuz    { background: #164e63; color: #67e8f9; }
+.tag-houthi    { background: #581c87; color: #d8b4fe; }
+.tag-ceasefire { background: #14532d; color: #86efac; }
+.tag-diplo     { background: #1e3a5f; color: #93c5fd; }
+
+/* ---------------------------------------------------------
+   11. EVENTS
+   --------------------------------------------------------- */
+.event {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.event:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.event h3 {
+  font-size: 1em;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.event p {
+  color: var(--muted);
+  font-size: 0.9em;
+  margin-bottom: 6px;
+}
+
+/* ---------------------------------------------------------
+   12. CONFIDENCE BADGES
+   --------------------------------------------------------- */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.65em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-confirmed  { background: #14532d; color: #86efac; }
+.badge-likely     { background: #713f12; color: #fde68a; }
+.badge-claim      { background: #7f1d1d; color: #fca5a5; }
+.badge-assessment { background: #581c87; color: #d8b4fe; }
+.badge-developing { background: #1e3a5f; color: #93c5fd; }
+.badge-breaking   { background: #dc2626; color: #fff; animation: pulse 2s infinite; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* ---------------------------------------------------------
+   13. SOURCE LINKS
+   --------------------------------------------------------- */
+.source-link {
+  color: var(--cyan);
+  text-decoration: none;
+  font-size: 0.8em;
+  border-bottom: 1px dotted var(--cyan);
+}
+
+.source-link:hover {
+  color: #fff;
+}
+
+/* ---------------------------------------------------------
+   14. TABLES
+   --------------------------------------------------------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85em;
+}
+
+th {
+  background: #1e293b;
+  padding: 10px 12px;
+  text-align: left;
+  color: var(--accent);
+  text-transform: uppercase;
+  font-size: 0.75em;
+  letter-spacing: 1px;
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #1e293b;
+}
+
+/* ---------------------------------------------------------
+   15. WATCHPOINTS
+   --------------------------------------------------------- */
+.watchpoint {
+  background: #1a1a2e;
+  border-left: 4px solid var(--red);
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 0 8px 8px 0;
+}
+
+.watchpoint h4 {
+  color: var(--red);
+  margin-bottom: 4px;
+  font-size: 0.95em;
+}
+
+.watchpoint p {
+  color: var(--muted);
+  font-size: 0.85em;
+}
+
+/* ---------------------------------------------------------
+   16. SOURCE INDEX SECTION
+   --------------------------------------------------------- */
+.source-section {
+  background: #0f172a;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.source-section h3 {
+  color: var(--cyan);
+  margin-bottom: 12px;
+}
+
+.source-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 8px;
+}
+
+.source-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: #111827;
+  border-radius: 4px;
+  font-size: 0.8em;
+}
+
+.source-item a {
+  color: var(--cyan);
+  text-decoration: none;
+}
+
+.source-item a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.source-cat {
+  color: var(--accent);
+  font-weight: 600;
+  min-width: 70px;
+}
+
+/* ---------------------------------------------------------
+   17. FOOTER
+   --------------------------------------------------------- */
+footer {
+  text-align: center;
+  padding: 30px;
+  color: var(--muted);
+  font-size: 0.8em;
+  border-top: 1px solid var(--border);
+}
+
+/* ---------------------------------------------------------
+   18. ARTICLE-SPECIFIC STYLES (Fulgrim / Substack)
+   --------------------------------------------------------- */
+.article-header {
+  padding: 40px 30px;
+  background: linear-gradient(135deg, #0f172a, #1e1b4b);
+  border-bottom: 3px solid var(--accent);
+  margin-bottom: 24px;
+}
+
+.article-header h1 {
+  font-size: 2em;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.article-header .byline {
+  color: var(--muted);
+  font-size: 0.9em;
+}
+
+.article-body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.article-body p {
+  margin-bottom: 1.2em;
+  font-size: 1.05em;
+  line-height: 1.75;
+}
+
+.article-body h2 {
+  color: var(--accent);
+  font-size: 1.4em;
+  margin: 2em 0 0.8em;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.article-body h3 {
+  color: var(--text);
+  font-size: 1.15em;
+  margin: 1.5em 0 0.6em;
+}
+
+.article-body blockquote {
+  border-left: 4px solid var(--accent);
+  padding: 12px 20px;
+  margin: 1.5em 0;
+  background: var(--card);
+  border-radius: 0 8px 8px 0;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.article-body .pullquote {
+  font-size: 1.3em;
+  color: var(--accent);
+  border-left: 4px solid var(--accent);
+  padding: 16px 24px;
+  margin: 2em 0;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.article-body .evidence-block {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 1.5em 0;
+}
+
+.article-cta {
+  text-align: center;
+  padding: 40px 20px;
+  margin: 2em 0;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border-radius: 8px;
+  border: 1px solid var(--accent);
+}
+
+/* ---------------------------------------------------------
+   19. RESPONSIVE BREAKPOINTS
+   --------------------------------------------------------- */
+@media (max-width: 768px) {
+  header, .article-header {
+    padding: 20px;
+  }
+
+  header h1 {
+    font-size: 1.3em;
+    letter-spacing: 1px;
+  }
+
+  .article-header h1 {
+    font-size: 1.5em;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .source-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .article-body {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  header h1 {
+    font-size: 1.1em;
+  }
+
+  .container {
+    padding: 12px;
+  }
+}
+
+  .article-header h1
