@@ -1,0 +1,42 @@
+---
+brief_id: EPIC-FURY-20260411
+campaign: EPIC-FURY
+date: 2026-04-11
+d_count: 44
+classification: OPEN SOURCE INTELLIGENCE — AI-ASSISTED ANALYSIS
+analyst: TARVITZ
+operator_reviewed: false
+confidence_overall: T2
+source_count: 16
+t1_t2_coverage_pct: 79
+map_included: true
+map_type: leaflet-interactive
+map_data_file: EPIC-FURY_20260411_D+44_MAP-DATA.json
+theater_count: 4
+theaters:
+  - name: Iran-Shahreza
+    status: active
+  - name: Gulf-Maritime
+    status: monitoring
+  - name: Pakistan-Islamabad
+    status: monitoring
+  - name: Israel-Lebanon-Gaza
+    status: active
+status: remediated
+remediation_date: 2026-04-12
+remediation_ref: TSK:021-D+44
+version: 1.1
+generated_by: VULKAN
+spec_version: DAILY-BRIEF-SPEC.md v1.0
+tags:
+  - epic-fury
+  - iran
+  - gulf
+  - pakistan
+  - lebanon
+  - gaza
+  - taiwan
+  - south-china-sea
+  - ukraine
+  - daily-brief
+---
